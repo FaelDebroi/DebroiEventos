@@ -1,0 +1,284 @@
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.imagemlogo {
+    width: 200px; /* Define a largura desejada */
+    height: auto; /* Ajusta a altura proporcionalmente */
+  }
+
+/* Estilo do menu fixo */
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    width: 98%;
+    background-color: #333;
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.menu-fixo .logo {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: #ff9800;
+}
+
+.menu-fixo nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que os itens do menu quebrem linha em telas menores */
+}
+
+.menu-fixo nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+    white-space: nowrap; /* Impede quebra de linha dentro de um item do menu */
+}
+
+.menu-fixo nav a:hover {
+    content:  " ";
+    height: 2px;
+    color: #f0ed51;
+    background-image: linear-gradient(45deg,#d0ff00,#ff7100);
+    margin: 3px;
+}
+
+/* Espaço para o conteúdo abaixo do menu */
+.content {
+    margin-top: 60px; /* Altura do menu */
+    padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .menu-fixo {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .menu-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .menu-links a {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-fixo .logo {
+        font-size: 1.2em;
+    }
+
+    .menu-fixo nav {
+        gap: 10px; /* Reduz o espaçamento entre os itens */
+        justify-content: center; /* Centraliza os itens no menu */
+    }
+
+    .menu-fixo nav a {
+        font-size: 1em;
+    }
+}
+
+/* testando  */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2e41a9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.slide-container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.card {
+    background: #2e41a9;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px #2e41a9;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.image-content {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10%
+}
+
+.image-content .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    z-index: 1;
+}
+
+.card-image {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img {
+    max-width: 100%;
+    height: auto;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: start;
+}
+
+.card-content .name {
+    font-size: 1.5rem;
+    color: #fcfcfc;
+    margin: 10px 0;
+}
+
+
+.card-content .description {
+    font-size: 1rem;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+.card-content.description {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #fdfdfd;
+    color: #000000;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 250px;
+    max-width: 1200px;
+}
+
+.container-button {
+    display: flex;                
+    flex-direction: column;      
+    justify-content: center;      
+    align-items: center;        
+    gap: 20px;                  
+}
+
+.button-sobre{
+    padding: 10px 20px;
+    background: #f8f8f8;
+    color: #000000;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 320px;
+    max-width: 1200px;
+}
+
+
+.button-AgendarVisita {
+    padding: 10px 20px;
+    background: #ffde59;
+    color: #000000;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 320px;
+    max-width: 1200px;
+}
+
+.button-sobre:hover, .button-AgendarVisita:hover {
+    background-color: #e1e1e1; /* Mudança de cor no hover */
+}
+
+.card-content.description {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #fdfdfd;
+    color: #000000;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 350px;
+    max-width: 1200px;
+}
+
+h1 {
+    text-align: center; 
+    align-items: center;  
+    margin: 10;  
+    color: #ffffff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 50px;
+    margin: 50px;
+}
+
+.card-content .button:hover {
+    background: #ffffff;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    font-size: 2rem;
+    
+}
+
+
