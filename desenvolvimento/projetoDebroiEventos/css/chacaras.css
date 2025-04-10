@@ -2,12 +2,15 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-image: url("../img/fundo.png");
 }
 
 .imagemlogo {
-    width: 200px; /* Define a largura desejada */
-    height: auto; /* Ajusta a altura proporcionalmente */
-  }
+    width: 200px;
+    /* Define a largura desejada */
+    height: auto;
+    /* Ajusta a altura proporcionalmente */
+}
 
 /* Estilo do menu fixo */
 .menu-fixo {
@@ -50,7 +53,8 @@ body {
 .menu-fixo nav {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Permite que os itens do menu quebrem linha em telas menores */
+    flex-wrap: wrap;
+    /* Permite que os itens do menu quebrem linha em telas menores */
 }
 
 .menu-fixo nav a {
@@ -58,20 +62,22 @@ body {
     text-decoration: none;
     font-size: 1em;
     transition: color 0.3s;
-    white-space: nowrap; /* Impede quebra de linha dentro de um item do menu */
+    white-space: nowrap;
+    /* Impede quebra de linha dentro de um item do menu */
 }
 
 .menu-fixo nav a:hover {
-    content:  " ";
+    content: " ";
     height: 2px;
     color: #f0ed51;
-    background-image: linear-gradient(45deg,#d0ff00,#ff7100);
+    background-image: linear-gradient(45deg, #d0ff00, #ff7100);
     margin: 3px;
 }
 
 /* Espaço para o conteúdo abaixo do menu */
 .content {
-    margin-top: 60px; /* Altura do menu */
+    margin-top: 60px;
+    /* Altura do menu */
     padding: 20px;
 }
 
@@ -101,8 +107,10 @@ body {
     }
 
     .menu-fixo nav {
-        gap: 10px; /* Reduz o espaçamento entre os itens */
-        justify-content: center; /* Centraliza os itens no menu */
+        gap: 10px;
+        /* Reduz o espaçamento entre os itens */
+        justify-content: center;
+        /* Centraliza os itens no menu */
     }
 
     .menu-fixo nav a {
@@ -207,14 +215,14 @@ body {
 }
 
 .container-button {
-    display: flex;                
-    flex-direction: column;      
-    justify-content: center;      
-    align-items: center;        
-    gap: 20px;                  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-.button-sobre{
+.button-sobre {
     padding: 10px 20px;
     background: #f8f8f8;
     color: #000000;
@@ -241,8 +249,10 @@ body {
     max-width: 1200px;
 }
 
-.button-sobre:hover, .button-AgendarVisita:hover {
-    background-color: #e1e1e1; /* Mudança de cor no hover */
+.button-sobre:hover,
+.button-AgendarVisita:hover {
+    background-color: #e1e1e1;
+    /* Mudança de cor no hover */
 }
 
 .card-content.description {
@@ -261,9 +271,9 @@ body {
 }
 
 h1 {
-    text-align: center; 
-    align-items: center;  
-    margin: 10;  
+    text-align: center;
+    align-items: center;
+    margin: 10;
     color: #ffffff;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 50px;
@@ -278,7 +288,5 @@ h1 {
 .swiper-button-prev {
     color: #ffffff;
     font-size: 2rem;
-    
+
 }
-
-
