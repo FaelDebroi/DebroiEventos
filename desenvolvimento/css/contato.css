@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2e41a9;
+}
+
+/* Menu fixo */
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.menu-fixo nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que os itens do menu quebrem linha em telas menores */
+}
+
+.menu-fixo nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+    white-space: nowrap; /* Impede quebra de linha dentro de um item do menu */
+}
+
+.menu-fixo nav a:hover {
+    content:  " ";
+    height: 2px;
+    color: #f0ed51;
+    background-image: linear-gradient(45deg,#d0ff00,#ff7100);
+    margin: 3px;
+}
+
+.menu-fixo .imagemlogo {
+    width: 200px;
+    height: auto;
+}
+
+.menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: #ff9800;
+}
+
+/* Seção de Contato */
+.contato {
+    background-image: url('/img/casamento.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px; /* Para não sobrepor o menu fixo */
+}
+
+.form-container {
+    background-color: #2e41a9;;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+    color: #ffffff;
+    margin-left: 50px;
+}
+
+input, textarea, select {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #ffde59;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e1e1e1;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    label, input, textarea, select {
+        font-size: 1rem;
+    }
+}

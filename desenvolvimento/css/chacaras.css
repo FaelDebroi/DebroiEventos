@@ -1,0 +1,163 @@
+/* Reset básico */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url("../img/fundo.png");
+}
+
+.imagemlogo {
+    width: 200px;
+    height: auto;
+}
+
+/* Estilo do menu fixo */
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    width: 98%;
+    background-color: #333;
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.menu-fixo .logo {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: #ff9800;
+}
+
+.menu-fixo nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Permite que os itens do menu quebrem linha em telas menores */
+}
+
+.menu-fixo nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+    white-space: nowrap;
+    /* Impede quebra de linha dentro de um item do menu */
+}
+
+.menu-fixo nav a:hover {
+    content: " ";
+    height: 2px;
+    color: #f0ed51;
+    background-image: linear-gradient(45deg, #d0ff00, #ff7100);
+    margin: 3px;
+}
+
+/* Espaço para o conteúdo abaixo do menu */
+.content {
+    margin-top: 560px;
+
+}
+
+.container {
+    height: 300px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+    gap: 1px;
+    justify-content: baseline;
+    min-height: 600px;
+    position: relative;
+    left: 90px;
+
+}
+
+.chacara {
+    margin: 20px;
+    margin-top: 50px;
+
+    width: 22%;
+    height: 525px;
+    width: 375px;
+    background-color: #448688;
+    /* justify-items: center; */
+    border-radius: 5%;
+}
+
+.imgChacara {
+    height: 250px;
+    width: 375px;
+    background-color: #50a5b3;
+}
+
+.imgChacara img {
+    width: 375px;
+    height: 250px;
+    border-radius: 5%;
+}
+
+.btnSobre,
+.btnChacara {
+    padding: 5px;
+    border-radius: 10%;
+    align-content: center;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+}
+
+.btnChacara {
+    background-color: #f0ed51;
+}
+
+.divTextoChacara {
+    margin-left: 5%;
+    margin-right: 3%;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.divTextoChacara h1 {
+    font-size: 18px;
+}
+
+
+.chacaraObservacoes {
+    font-size: 14px;
+    margin: 0%;
+}
+
+.chacaraObservacoes p {
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.divbtnChacara {
+    margin: 20px;
+    text-align: center;
+    width: 300px;
+    height: 20px;
+    border-radius: 5%;
+}
