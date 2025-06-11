@@ -1,3 +1,29 @@
+<?php
+    $servidor = "localhost";
+    $usuario  = "root";
+    $senha    = "";
+    $banco    ="debroieventos";
+    $conecta  = mysqli_connect($servidor,$usuario,$senha,$banco);
+
+    if(mysqli_connect_errno()){
+        die("Conexao falhou" . mysqli_connect_errno());
+    }
+
+    $Chacara_consulta = "SELECT e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho
+                        FROM endereco e
+                        INNER JOIN chacaras c ON e.IdEndereco = c.IdEndereco
+                        INNER JOIN estado es ON es.IdEstado = e.Estado_Id
+                        INNER JOIN infochacaras ic ON ic.IdInfoChacaras = c.IdInfoChacaras
+                        INNER JOIN imgchacaras mg ON mg.IdChacara= c.IdChacaras;";
+
+    $Chacara = mysqli_query($conecta,$Chacara_consulta);
+
+    if(!$Chacara){
+        die("falha na consulta ao banco de dados");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,7 +40,7 @@
     <header class="menu-fixo">
         <img href="#" src="../img/logoDebroi.png" class="imagemlogo">
         <nav class="menu-links">
-              <a href="index.php"><b>Home</b></a>
+            <a href="index.php"><b>Home</b></a>
             <a href="sobre.php"><b>Sobre</b></a>
             <a href="chacaras.php"><b>Chácaras</b></a>
             <a href="servicos.php"><b>Serviços</b></a>
@@ -27,21 +53,38 @@
 
     <div class="container">
         <?php 
-        $contador = 1;
-         while($contador <= 18){
-          $contador++;
+         while($Linha = mysqli_fetch_assoc($Chacara)){
+
+
+            
+            //atrativos
+            $Atrativos = "";
+            if($Linha["Wifi"] == 1){
+            $Atrativos = "Wifi";
+            }
+
+            if($Linha["piscina"] == 1){
+             $Atrativos .= " piscina";
+            }
+
+          
          ?>
-             
+
         <div class="chacara">
             <div class="imgChacara">
-                <img href="#" src="../img/chacaraprimaveira.jpg" class="imagemlogo">
+                <img href="#" src="<?php echo $Linha["caminho"]?>" class="imagemlogo">
             </div>
             <div class="divTextoChacara">
-                <h1>Chácara Fortaleza Valinhos</h1>
+                <h1><?php echo "Chácara: " . $Linha["Nome"] ?></h1>
                 <div class="chacaraObservacoes">
-                    <p><Strong>Localizacao:</Strong>"nova europa</p>
-                    <p><strong>Atrativos:</strong> Piscina, Salão Coberto, Estacionamento.</p>
-                    <p><strong>Valor:</strong>1500</p>
+                    <ul>
+                        <li><Strong>Localizacao:</Strong><?php echo $Linha["rua"].",",$Linha["bairro"] 
+                        ."<br> ",$Linha["cidade"] ."-",$Linha["Estados"]?>
+                        </li>
+                        <li><Strong>Atrativos: </Strong>caminho</li>
+                        <li><Strong>Valor: </Strong><?php echo $Linha["valor"]?></li>
+                    </ul>
+
                 </div>
             </div>
             <div class="divbtnChacara">
@@ -59,3 +102,7 @@
 </body>
 
 </html>
+
+<?php
+    mysqli_close($conecta);
+    ?>
