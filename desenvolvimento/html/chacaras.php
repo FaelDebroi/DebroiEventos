@@ -9,7 +9,7 @@
         die("Conexao falhou" . mysqli_connect_errno());
     }
 
-    $Chacara_consulta = "SELECT e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho
+    $Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho
                         FROM endereco e
                         INNER JOIN chacaras c ON e.IdEndereco = c.IdEndereco
                         INNER JOIN estado es ON es.IdEstado = e.Estado_Id
@@ -58,19 +58,25 @@
 
             
             //atrativos
-            $Atrativos = "";
-            if($Linha["Wifi"] == 1){
-            $Atrativos = "Wifi";
-            }
+           $atrativos = [];
 
-            if($Linha["piscina"] == 1){
-             $Atrativos .= " piscina";
-            }
+if ($Linha["Wifi"] == 1) {
+    $atrativos[] = "Wifi";
+}
+
+if ($Linha["piscina"] == 1) {
+    $atrativos[] = "Piscina";
+}
+
+
+// Junta todos os atrativos separados por vírgula
+$Atrativos = implode(", ", $atrativos);
 
           
          ?>
 
         <div class="chacara">
+
             <div class="imgChacara">
                 <img href="#" src="<?php echo $Linha["caminho"]?>" class="imagemlogo">
             </div>
@@ -81,16 +87,19 @@
                         <li><Strong>Localizacao:</Strong><?php echo $Linha["rua"].",",$Linha["bairro"] 
                         ."<br> ",$Linha["cidade"] ."-",$Linha["Estados"]?>
                         </li>
-                        <li><Strong>Atrativos: </Strong>caminho</li>
+                        <li><Strong>Atrativos: </Strong><?php echo $Atrativos ?></li>
                         <li><Strong>Valor: </Strong><?php echo $Linha["valor"]?></li>
                     </ul>
 
                 </div>
             </div>
             <div class="divbtnChacara">
-                <button class="btnSobre" id="idSobre">Sobre</button>
+                <a href="InfoChacaras.php?codigo=<?php echo $Linha["IdChacaras"]?>">
+                    <button class="btnSobre" id="idSobre">Sobre</button>
+                </a>
                 <button class="btnChacara" id="Agendar visita">Agendar Visita</button>
             </div>
+
         </div>
         <?php }  ?>
 
