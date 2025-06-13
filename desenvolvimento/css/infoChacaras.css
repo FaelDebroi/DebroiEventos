@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #2f3ca3;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #101530;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-weight: bold;
+}
+
+nav a {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.gallery img {
+    border-radius: 8px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.visit {
+    background-color: #f44336;
+    color: white;
+}
+
+.budget {
+    background-color: #ff5722;
+    color: white;
+}
+
+.info h2 {
+    margin-bottom: 10px;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.owner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.owner img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.description h2 {
+    margin-bottom: 10px;
+}
+
+.description p {
+    line-height: 1.6;
+}
+
+footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.imgGrande img {
+    width: 650px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.imgPequena {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 por linha */
+    gap: 10px;
+}
+
+.imgPequena img {
+    width: 318px;
+    height: 211px;
+    object-fit: cover;
+    border-radius: 6px;
+}

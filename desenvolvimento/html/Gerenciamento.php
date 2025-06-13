@@ -8,7 +8,11 @@
 </head>
 
 <body>
+    <header class="menu-fixo">
+        <?php include 'menuBarra.php'; ?>
+    </header>
     <!-- Criacao de gerenciamento do admin-->
+
 </body>
 
 </html>

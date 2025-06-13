@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Debroi Eventos</title>
     <link rel="stylesheet" href="/css/cadastro.css">
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="logo">Debroi Eventos</div>
-        <ul>
-             <a href="index.php"><b>Home</b></a>
-            <a href="sobre.php"><b>Sobre</b></a>
-            <a href="chacaras.php"><b>Chácaras</b></a>
-            <a href="servicos.php"><b>Serviços</b></a>
-            <a href="contato.php"><b>Contato</b></a>
-            <a href="login.php"><b>Login</b></a>
-        </ul>
-    </nav>
+    <header>
+        <?php include 'menuBarra.php'; ?>
+    </header>
     <div class="container">
         <div class="cadastro-box">
             <div class="logo">
@@ -62,4 +56,5 @@
     </div>
     <script src="/js/cadastro.js"></script>
 </body>
+
 </html>

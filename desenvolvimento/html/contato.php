@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Debroi Eventos</title>
-    <link rel="stylesheet" href="../css/contato.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/contato.css" defer>
+
 </head>
+
 <body>
 
     <!-- Menu Fixo -->
     <header class="menu-fixo">
-        <img href="#" src="../img/logoDebroi.png" class="imagemlogo">
-        <nav class="menu-links">
-            <a href="index.php"><b>Home</b></a>
-            <a href="sobre.php"><b>Sobre</b></a>
-            <a href="chacaras.php"><b>Chácaras</b></a>
-            <a href="servicos.php"><b>Serviços</b></a>
-            <a href="contato.php"><b>Contato</b></a>
-            <a href="login.php"><b>Login</b></a>
-        </nav>
+        <?php include 'menuBarra.php'; ?>
     </header>
 
     <!-- Seção de Contato com Fundo -->
@@ -45,15 +40,18 @@
                     <option value="chacara3">Chácara 3</option>
                     <option value="chacara4">Chácara 4</option>
                 </select>
+                <div class="btnEnviarCtt">
+                    <button type="submit">Enviar</button>
+                </div>
 
-                <button type="submit">Enviar</button>
             </form>
         </div>
     </section>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2025 Debroi Eventos. Todos os direitos reservados.</p>
-    </footer>
+    </footer> -->
 
 </body>
+
 </html>

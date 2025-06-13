@@ -13,77 +13,10 @@ body {
     height: auto;
 }
 
-/* Estilo do menu fixo */
-.menu-fixo {
-    position: fixed;
-    top: 0;
-    width: 98%;
-    background-color: #333;
-    display: flex;
-    margin-top: 15px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
-.menu-fixo .logo {
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.menu-links {
-    display: flex;
-    gap: 20px;
-}
-
-.menu-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
-}
-
-.menu-links a:hover {
-    color: #ff9800;
-}
-
-.menu-fixo nav {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    /* Permite que os itens do menu quebrem linha em telas menores */
-}
-
-.menu-fixo nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
-    white-space: nowrap;
-    /* Impede quebra de linha dentro de um item do menu */
-}
-
-.menu-fixo nav a:hover {
-    content: " ";
-    height: 2px;
-    color: #f0ed51;
-    background-image: linear-gradient(45deg, #d0ff00, #ff7100);
-    margin: 3px;
-}
-
-/* Espaço para o conteúdo abaixo do menu */
-.content {
-    margin-top: 560px;
-
-}
 
 .container {
-    height: 220px;
-    width: max-content;
+    width: 100%;
+    height: 100%;
     left: 90px;
     padding-top: 80px;
     padding-left: 110px;
@@ -91,7 +24,6 @@ body {
     flex-wrap: wrap;
     justify-content: baseline;
     gap: 1px;
-    justify-content: baseline;
     min-height: 600px;
     position: relative;
 

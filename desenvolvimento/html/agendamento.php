@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento - Debroi Eventos</title>
     <link rel="stylesheet" href="/css/agendamento.css">
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="logo">Debroi Eventos</div>
-        <ul>
-             <a href="index.php"><b>Home</b></a>
-            <a href="sobre.php"><b>Sobre</b></a>
-            <a href="chacaras.php"><b>Chácaras</b></a>
-            <a href="servicos.php"><b>Serviços</b></a>
-            <a href="contato.php"><b>Contato</b></a>
-            <a href="login.php"><b>Login</b></a>
-        </ul>
-    </nav>
+    <header>
+        <?php include 'menuBarra.php'; ?>
+    </header>
     <div class="background">
         <div class="form-container">
             <h2>Agendamento de visitas</h2>
@@ -42,4 +36,5 @@
     </div>
     <script src="../js/agendamento.js"></script>
 </body>
+
 </html>

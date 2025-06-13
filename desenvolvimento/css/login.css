@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*body {
+    font-family: Arial, sans-serif;
+    background-color: #2e41a9;
+}*/
+
+/* Menu fixo */
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.menu-fixo nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.menu-fixo nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.menu-fixo nav a:hover {
+    color: #f0ed51;
+    background-image: linear-gradient(45deg,#d0ff00,#ff7100);
+    margin: 3px;
+}
+
+.menu-fixo .imagemlogo {
+    width: 200px;
+    height: auto;
+}
+
+.menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: #ff9800;
+}
+
+/* Layout geral da tela de login */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    min-height: 100vh;
+    gap: 40px;
+    padding-bottom: 60px;
+}
+
+/* Imagem à esquerda */
+.container .img {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Área do formulário */
+.login-side {
+    background-color: #2e41a9;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-side .logo h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.login-side .logo span {
+    color: #ffde59;
+}
+
+form h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-align: left;
+    display: block;
+    margin-left: 40px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #ffde59;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e1e1e1;
+}
+
+form p {
+    margin-top: 15px;
+    color: #fff;
+}
+
+form p a {
+    color: #ffde59;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 20px 80px;
+    }
+
+    .container .img {
+        margin-bottom: 20px;
+    }
+
+    label, input {
+        font-size: 1rem;
+    }
+
+    .login-side .logo h1 {
+        font-size: 1.5rem;
+    }
+}
+/*slandafnj*/
+body.login-bg {
+    background-image: url('../img/fortaleza01.jpeg'); /* ou outra imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+}
+
+.login-side {
+    background-color: rgba(46, 65, 169, 0.9); /* fundo translúcido */
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}/*
+.container .img {
+    max-width: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+*/
+

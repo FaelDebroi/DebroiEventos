@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css" defer>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,20 +14,12 @@
 
 <body>
     <header class="menu-fixo">
-        <img href="#" src="../img/logoDebroi.png" class="imagemlogo">
-        <nav>
-            <a href="index.php"><b>Home</b></a>
-            <a href="sobre.php"><b>Sobre</b></a>
-            <a href="chacaras.php"><b>Chácaras</b></a>
-            <a href="servicos.php"><b>Serviços</b></a>
-            <a href="contato.php"><b>Contato</b></a>
-            <a href="login.php"><b>Login</b></a>
-        </nav>
+        <?php include 'menuBarra.php'; ?>
     </header>
 
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="../img/fortaleza01.jpeg" alt="Paisagem bonita">
+            <div class="swiper-slide"><img src="../img/Chacarasimg/fortaleza01.jpeg" alt="Paisagem bonita">
                 <div class="texto-central">Bem Vindo<br>Debroi Eventos!</div>
             </div>
             <div class="swiper-slide"><img src="../img/florips.jpg" alt="Paisagem bonita">
