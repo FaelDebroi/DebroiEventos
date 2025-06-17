@@ -15,7 +15,7 @@
 
     <main class="container">
         <h1>Chácara Recanto do Sol</h1>
-
+        <hr>
         <div class="gallery">
             <div class="imgGrande">
                 <img src="../img/Chacarasimg/donaflor.jpeg" alt="Foto principal">
@@ -28,7 +28,6 @@
             </div>
         </div>
 
-
         <div class="buttons">
             <button class="visit">Agendar Visita</button>
             <button class="budget">Solicitar Orçamento</button>
@@ -36,6 +35,7 @@
 
         <section class="info">
             <h2>Dados de interesse:</h2>
+            <p>📍 Endereço: Rodovia Lix da Cunha, Estr. da Pedra Branca - Campinas - SP</p>
             <ul class="features">
                 <li>💰 Valor a combinar</li>
                 <li>🅿️ Estacionamento no local</li>
@@ -43,12 +43,12 @@
                 <li>📶 Wifi no local</li>
                 <li>🏊 Piscina no local</li>
                 <li>🚻 3 banheiros no local</li>
-                <li>📍 Endereço: Rodovia Lix da Cunha Estr. da Pedra Branca - Campinas - SP</li>
             </ul>
+
         </section>
 
         <section class="owner">
-            <img src="https://via.placeholder.com/80" alt="Sandra Debroi">
+            <img src="../img/Chacarasimg/donaflor.jpeg" alt="Sandra Debroi">
             <div>
                 <strong>Proprietária: Sandra Debroi</strong><br />
                 +20 anos no mercado
@@ -66,7 +66,13 @@
                 arborizado para fazer a cerimônia com pergolado natural.
             </p>
         </section>
-
+        <div class="mapa-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.024124158418!2d-47.09747428454892!3d-22.91238494376866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cf7110000001%3A0x5cd77dcb18ce75f1!2sRodovia%20Lix%20da%20Cunha%20-%20Campinas%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1718644870000!5m2!1spt-BR!2sbr"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
         <footer>
             <a href="#"><img src="https://img.icons8.com/color/48/internet--v1.png" /></a>
             <a href="#"><img src="https://img.icons8.com/fluency/48/instagram-new.png" /></a>

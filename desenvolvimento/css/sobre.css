@@ -6,69 +6,6 @@ body {
     background-image: url("../img/fundo.png");
 }
 
-/* Menu fixo */
-.menu-fixo {
-    position: fixed;
-    top: 0;
-    width: 97%;
-    background-color: #2b2a2a;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(39, 37, 37, 0.2);
-    z-index: 1000;
-    border-radius: 20px;
-}
-
-.menu-fixo nav {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    /* Permite que os itens do menu quebrem linha em telas menores */
-}
-
-.menu-fixo nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
-    white-space: nowrap;
-    /* Impede quebra de linha dentro de um item do menu */
-}
-
-.menu-fixo nav a:hover {
-    content: " ";
-    height: 2px;
-    color: #f0ed51;
-    background-image: linear-gradient(45deg, #d0ff00, #ff7100);
-    margin-top: 3px;
-}
-
-.menu-links {
-    display: flex;
-    gap: 20px;
-}
-
-.menu-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
-}
-
-.menu-links a:hover {
-    color: #ff9800;
-}
-
-.imagemlogo {
-    width: 200px;
-    height: auto;
-}
-
 /* Estilo da seção "Sobre" */
 .sobre-container {
     display: flex;

@@ -33,7 +33,7 @@ body {
     margin: 15px;
     margin-top: 50px;
     width: 22%;
-    height: 500px;
+    height: 530px;
     width: 350px;
     background-color: #448688;
     /* justify-items: center; */
@@ -75,6 +75,8 @@ body {
 
 .divTextoChacara h1 {
     font-size: 18px;
+    width: 320px;
+    height: 50px;
 }
 
 
@@ -90,6 +92,7 @@ body {
 }
 
 .chacaraObservacoes li {
+    margin: 5px;
     list-style: none !important;
     font-family: sans-serif;
     font-size: 16px;

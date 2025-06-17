@@ -7,73 +7,15 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #2e41a9;
-    padding-top: 60px; /* Espaço para o menu fixo */
+    padding-top: 60px;
+    /* Espaço para o menu fixo */
 }
 
-
-
-.menu-fixo {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #333;
-    display: flex;
-    margin-top: 15px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-radius: 20px;
-}
-
-.menu-fixo nav {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap; /* Permite que os itens do menu quebrem linha em telas menores */
-}
-
-.menu-fixo nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
-    white-space: nowrap; /* Impede quebra de linha dentro de um item do menu */
-}
-
-.menu-fixo nav a:hover {
-    content:  " ";
-    height: 2px;
-    color: #f0ed51;
-    background-image: linear-gradient(45deg,#d0ff00,#ff7100);
-    margin: 3px;
-}
-
-
-
-.imagemlogo {
-    width: 150px;
-}
-
-.menu-links {
-    display: flex;
-    gap: 20px;
-}
-
-.menu-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-.menu-links a:hover {
-    color: #ff9800;
-}
 
 h1 {
     text-align: center;
-    margin-top: 80px; /* Ajuste para o menu fixo */
+    margin-top: 80px;
+    /* Ajuste para o menu fixo */
     font-size: 2.5rem;
     color: #333;
 }
