@@ -30,7 +30,7 @@ html {
 /* Lado do formulário */
 .login-form-side {
     flex: 1;
-    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(to right, #1f1769, #0f00b8, #2e2eb4);
     display: flex;
     flex-direction: column;
     justify-content: center;

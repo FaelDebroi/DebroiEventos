@@ -68,7 +68,6 @@ $Atrativos = implode(", ", $atrativos);
          ?>
 
         <div class="chacara">
-
             <div class="imgChacara">
                 <img href="#" src="<?php echo $Linha["caminho"]?>" class="imagemlogo">
             </div>

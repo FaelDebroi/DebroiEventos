@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <header class="menu-fixo">
         <?php include 'menuBarra.php'; ?>
     </header>
@@ -77,7 +78,7 @@
             <a href="#"><img src="https://img.icons8.com/color/48/internet--v1.png" /></a>
             <a href="#"><img src="https://img.icons8.com/fluency/48/instagram-new.png" /></a>
             <a href="#"><img src="https://img.icons8.com/fluency/48/facebook-new.png" /></a>
-            <a href="#"><img src="https://img.icons8.com/color/48/whatsapp.png" /></a>
+            <a href="https://w.app/debroieventos"><img src="https://img.icons8.com/color/48/whatsapp.png" /></a>
         </footer>
     </main>
 </body>

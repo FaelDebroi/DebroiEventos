@@ -1,67 +1,118 @@
-@import url('/css/global.css');
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.navbar {
-    background-color: #333;
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to right, #1f1769, #0f00b8, #2e2eb4);
+    /* fundo gradiente escuro */
     color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
-
-.navbar ul li {
-    padding: 0 10px; 
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.container {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 20px;
-    background: linear-gradient(90deg, #06113C, #1B75D1);
 }
 
-.cadastro-box {
+.container {
     width: 100%;
-    max-width: 500px;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* fundo sutil transparente */
+    padding: 40px 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
-.form-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+/* Logo */
+.logo img {
+    max-height: 80px;
+    margin-bottom: 20px;
 }
 
-.form-group {
-    flex: 1 1 calc(50% - 10px);
-    display: flex;
-    flex-direction: column;
+.logo h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
-.p a{
+/* Título */
+.container h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
     color: white;
 }
 
-button {
-    width: 100%;
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
+/* Duas colunas */
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.form-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #eeeeee;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Botão */
+button[type="submit"] {
+    background-color: #FFD700;
+    color: black;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #e6c200;
+}
+
+/* Link de login */
+p {
+    margin-top: 20px;
+    color: white;
+}
+
+p a {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+/* Responsivo */
 @media (max-width: 600px) {
     .form-row {
         flex-direction: column;

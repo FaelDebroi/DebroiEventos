@@ -10,6 +10,9 @@
 
 <body>
     <div class="login-wrapper">
+        <header class="menu-fixo">
+            <?php include 'menuBarra.php'; ?>
+        </header>
         <!-- Lado da Imagem -->
         <div class="login-image">
             <img src="../img/chacarasimg/fortaleza.jpg" alt="Imagem de casamento" />
@@ -29,7 +32,7 @@
                 <input type="password" id="password" placeholder="Digite sua senha" required />
 
                 <button type="submit">Confirmar</button>
-                <p>Não tem conta? <a href="cadastro.html">Crie uma nova!</a></p>
+                <p>Não tem conta? <a href="cadastro.php">Crie uma nova!</a></p>
             </form>
         </div>
     </div>
