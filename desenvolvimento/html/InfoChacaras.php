@@ -1,18 +1,12 @@
 <?php
 
+   include('conexao.php');
+
     if (isset($_GET['codigo'])) {
     
     $codigo = $_GET['codigo']; // codigo do link
 
-    $servidor = "localhost";
-    $usuario  = "root";
-    $senha    = "";
-    $banco    ="debroieventos";
-    $conecta  = mysqli_connect($servidor,$usuario,$senha,$banco);
 
-    if(mysqli_connect_errno()){
-        die("Conexao falhou" . mysqli_connect_errno());
-    }
 
     $Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, ic.Banheiro, c.LocalizacaoUrlMaps, c.Nome, ic.Wifi, ic.piscina, ic.estacionamento, ic.valor, mg.caminho,ic.valor,ic.qtdMaxConvidados, ic.qtdMinConvidados,c.descricao
                     FROM endereco e

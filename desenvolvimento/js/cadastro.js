@@ -1,21 +1,10 @@
-document.getElementById("cadastro-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Previne o recarregamento da página
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const telefone = document.getElementById("telefone").value;
-    const cpf = document.getElementById("cpf").value;
-    const senha = document.getElementById("senha").value;
-    const confirmarSenha = document.getElementById("confirmar-senha").value;
+function verificarSenhas() {
+    const senha = document.querySelector('input[name="senha"]').value;
+    const confirmarSenha = document.querySelector('input[name="confirmar_senha"]').value;
 
     if (senha !== confirmarSenha) {
-        alert("As senhas não coincidem. Por favor, verifique.");
-        return;
+        alert("As senhas não coincidem.");
+        return false;
     }
-
-    if (nome && email && senha) {
-        alert("Cadastro realizado com sucesso!");
-        window.location.href = "login.html";
-    } else {
-        alert("Por favor, preencha todos os campos.");
-    }
-});
+    return true;
+}
