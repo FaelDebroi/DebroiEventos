@@ -1,31 +1,84 @@
+<?php
+
+    if (isset($_GET['codigo'])) {
+    
+    $codigo = $_GET['codigo']; // codigo do link
+
+    $servidor = "localhost";
+    $usuario  = "root";
+    $senha    = "";
+    $banco    ="debroieventos";
+    $conecta  = mysqli_connect($servidor,$usuario,$senha,$banco);
+
+    if(mysqli_connect_errno()){
+        die("Conexao falhou" . mysqli_connect_errno());
+    }
+
+    $Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, ic.Banheiro, c.LocalizacaoUrlMaps, c.Nome, ic.Wifi, ic.piscina, ic.estacionamento, ic.valor, mg.caminho,ic.valor,ic.qtdMaxConvidados, ic.qtdMinConvidados,c.descricao
+                    FROM endereco e
+                    left JOIN chacaras c ON e.IdEndereco = c.IdEndereco
+                    left JOIN estado es ON es.IdEstado = e.Estado_Id
+                    left JOIN infochacaras ic ON ic.IdInfoChacaras = c.IdInfoChacaras
+                    left JOIN imgchacaras mg ON mg.IdChacara = c.IdChacaras
+                    WHERE c.IdChacaras = '$codigo'";
+
+     $ChacaraImg_consulta = "SELECT img.caminho ,img.IdChacara
+	                  FROM imgchacaras img 
+                    WHERE img.IdChacara = '$codigo'"; 
+    
+    
+     $ChacaraImg_result = mysqli_query($conecta, $ChacaraImg_consulta);
+
+    // Cria o array
+    $imagens = [];
+
+      // Percorre os resultados e adiciona no array
+    while ($linha = mysqli_fetch_assoc($ChacaraImg_result)) {
+      $imagens[] = $linha;  // Cada linha é um array associativo: ['caminho' => ..., 'IdChacara' => ...]
+    }
+
+    $Chacara = mysqli_query($conecta, $Chacara_consulta);
+
+
+    if(!$Chacara){
+        die("falha na consulta ao banco de dados");
+    }
+
+    $Chacara_dados = mysqli_fetch_assoc($Chacara);
+    
+    } else {
+        echo "Código não informado.";
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chácara Recanto do Sol</title>
+    <title><?php echo $Chacara_dados["Nome"]?></title>
     <link rel="stylesheet" href="../css/infoChacaras.css" />
 </head>
 
 <body>
-
     <header class="menu-fixo">
         <?php include 'menuBarra.php'; ?>
     </header>
 
     <main class="container">
-        <h1>Chácara Recanto do Sol</h1>
+        <h1><?php echo $Chacara_dados["Nome"]?></h1>
         <hr>
         <div class="gallery">
             <div class="imgGrande">
-                <img src="../img/Chacarasimg/donaflor.jpeg" alt="Foto principal">
+                <img src="<?php echo $Chacara_dados["caminho"]?>" alt="Foto principal">
             </div>
             <div class="imgPequena">
-                <img src="../img/Chacarasimg/donaflor.jpeg" alt="Foto extra 1">
-                <img src="../img/Chacarasimg/chacaraprimaveira.jpg" alt="Foto extra 2">
-                <img src="../img/Chacarasimg/florips.jpeg" alt="Foto extra 3">
-                <img src="../img/Chacarasimg/Giardino.jpg" alt="Foto extra 4">
+                <img src="<?php echo $imagens[0]['caminho']; ?>" alt="Foto extra 1">
+                <img src="<?php echo $imagens[1]['caminho']; ?>" alt="Foto extra 2">
+                <img src="<?php echo $imagens[2]['caminho']; ?>" alt="Foto extra 3">
+                <img src="<?php echo $imagens[3]['caminho']; ?>" alt="Foto extra 4">
             </div>
         </div>
 
@@ -36,14 +89,60 @@
 
         <section class="info">
             <h2>Dados de interesse:</h2>
-            <p>📍 Endereço: Rodovia Lix da Cunha, Estr. da Pedra Branca - Campinas - SP</p>
+            <p>📍 Endereço:
+                <?php echo $Chacara_dados["rua"] . ", " . $Chacara_dados["bairro"] ." | ".$Chacara_dados["cidade"] . " - " . $Chacara_dados["Estados"];?>
+            </p>
             <ul class="features">
-                <li>💰 Valor a combinar</li>
-                <li>🅿️ Estacionamento no local</li>
-                <li>👥 50 a 500 convidados</li>
-                <li>📶 Wifi no local</li>
-                <li>🏊 Piscina no local</li>
-                <li>🚻 3 banheiros no local</li>
+                <li>💰
+                    <?php 
+                    if (!empty($Chacara_dados["valor"])) {
+                      echo $Chacara_dados["valor"];
+                    } else {
+                      echo "Valor A Definir";
+                    }
+                ?>
+                </li>
+                <li>🅿️ <?php 
+                    if (!empty($Chacara_dados["estacionamento"])) {
+                      echo "Possui ".$Chacara_dados["estacionamento"]." Vagas no local";
+                    } else {
+                      echo "Não possui estacionamento";
+                    }
+                ?></li>
+                <li>👥 <?php 
+                    if (!empty($Chacara_dados["estacionamento"])) {
+                      echo "Acomoda ".$Chacara_dados["qtdMinConvidados"]." a ". $Chacara_dados["qtdMaxConvidados"]." convidados";
+                    } else {
+                      echo "Não Informado";
+                    }
+                ?></li>
+                <li>📶
+                    <?php 
+                    if ($Chacara_dados["Wifi"] == 1) {
+                      echo "Wifi no local";
+                    } else {
+                      echo "Não possui Wifi no local";
+                    }
+                    ?>
+                </li>
+                <li>🏊
+                    <?php 
+                    if ($Chacara_dados["piscina"] == 1) {
+                      echo "Piscina no local";
+                    } else {
+                      echo "Não possui Piscina no local";
+                    }
+                    ?>
+                </li>
+                <li>🚻
+                    <?php 
+                    if ($Chacara_dados["Banheiro"] > 1) {
+                      echo $Chacara_dados["Banheiro"]." banheiros no local";
+                    } else {
+                      echo "Não possui Banheiro no local";
+                    }
+                    ?>
+                </li>
             </ul>
 
         </section>
@@ -59,19 +158,19 @@
         <section class="description">
             <h2>Informação:</h2>
             <p>
-                A Chácara Fortaleza possui um cenário de um belo casarão e espaço arborizado e gramado com uma linda
-                piscina que embelezará ainda mais o seu ambiente.<br><br>
-                A chácara possui uma área de 50.000 m² arborizada, sendo 4.000 m² de platô para jardim e 700.000 m² de
-                quadra. Acomodação com salas para 15 pessoas e cozinha completa, além de 3 banheiros, salão de festas,
-                churrasqueira, espaço para cerimônia, campo de futebol, estacionamento para 50 carros e um campo
-                arborizado para fazer a cerimônia com pergolado natural.
+                <?php 
+                    if (!empty($Chacara_dados["descricao"])) {
+                      echo $Chacara_dados["descricao"];
+                    } else {
+                      echo "Não possui descricao ate o momento";
+                    }
+                    ?>
             </p>
         </section>
         <div class="mapa-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.024124158418!2d-47.09747428454892!3d-22.91238494376866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cf7110000001%3A0x5cd77dcb18ce75f1!2sRodovia%20Lix%20da%20Cunha%20-%20Campinas%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1718644870000!5m2!1spt-BR!2sbr"
-                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+
+            <iframe src="<?php echo $Chacara_dados["LocalizacaoUrlMaps"]; ?>" width="100%" height="450"
+                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
         <footer>

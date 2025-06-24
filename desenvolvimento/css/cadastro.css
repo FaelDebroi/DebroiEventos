@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(to right, #1f1769, #0f00b8, #2e2eb4);
+    background: linear-gradient(to right, #000000, #0f00b8, #0707ff);
     /* fundo gradiente escuro */
     color: white;
     min-height: 100vh;

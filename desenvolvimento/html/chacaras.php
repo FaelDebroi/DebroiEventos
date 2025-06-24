@@ -9,12 +9,12 @@
         die("Conexao falhou" . mysqli_connect_errno());
     }
 
-    $Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho
+    $Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho, c.LocalizacaoUrlMaps
                         FROM endereco e
-                        INNER JOIN chacaras c ON e.IdEndereco = c.IdEndereco
-                        INNER JOIN estado es ON es.IdEstado = e.Estado_Id
-                        INNER JOIN infochacaras ic ON ic.IdInfoChacaras = c.IdInfoChacaras
-                        INNER JOIN imgchacaras mg ON mg.IdChacara= c.IdChacaras;";
+                        left JOIN chacaras c ON e.IdEndereco = c.IdEndereco
+                        left JOIN estado es ON es.IdEstado = e.Estado_Id
+                        left JOIN infochacaras ic ON ic.IdInfoChacaras = c.IdInfoChacaras
+                        left JOIN imgchacaras mg ON mg.IdChacara= c.IdChacaras;";
 
     $Chacara = mysqli_query($conecta,$Chacara_consulta);
 
@@ -69,7 +69,11 @@ $Atrativos = implode(", ", $atrativos);
 
         <div class="chacara">
             <div class="imgChacara">
-                <img href="#" src="<?php echo $Linha["caminho"]?>" class="imagemlogo">
+                <?php if (!empty($Linha['caminho'])): ?>
+                <img src="<?php echo $Linha['caminho']; ?>" class="imagemlogo" alt="Logo">
+                <?php else: ?>
+                <img src="../img/Chacarasimg/fortaleza.jpg" class="imagemlogo" alt="Logo padrão">
+                <?php endif; ?>
             </div>
             <div class="divTextoChacara">
                 <h1><?php echo "Chácara: " . $Linha["Nome"] ?></h1>
