@@ -83,6 +83,7 @@ $Atrativos = implode(", ", $atrativos);
                 <a href="InfoChacaras.php?codigo=<?php echo $Linha["IdChacaras"]?>">
                     <button class="btnSobre" id="idSobre">Sobre</button>
                 </a>
+                <!-- passar o nome da chacara -->
                 <button class="btnChacara" id="Agendar visita">Agendar Visita</button>
             </div>
 

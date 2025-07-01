@@ -1,93 +1,178 @@
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #2e41a9;
-    padding-top: 60px;
-    /* Espaço para o menu fixo */
-}
-
-
-h1 {
-    text-align: center;
-    margin-top: 80px;
-    /* Ajuste para o menu fixo */
-    font-size: 2.5rem;
-    color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("../img/fundo.png");
+  /* azul escuro */
+  color: #fff;
+  padding: 40px;
 }
 
 .servicos {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+  margin-top: 100px;
 }
 
-.service {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Título principal */
+.servicos h1 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 30px;
 }
 
-.service h2 {
-    font-size: 2rem;
-    color: #333;
+/* Container horizontal */
+.servicos-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.service p {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+/* Imagem principal */
+.imagem-servico img {
+  width: 350px;
+  height: 400px;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-button {
-    background-color: #ffde59;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Itens de serviço */
+.itens-servicos {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 500px;
 }
 
-button:hover {
-    background-color: #e1e1e1;
+.item h2 {
+  font-size: 20px;
+  color: #fff;
 }
 
-.more-info {
-    display: none;
-    margin-top: 10px;
-    font-size: 1rem;
+.item p {
+  margin: 5px 0 10px;
+  font-size: 14px;
 }
 
-.more-info ul {
-    list-style-type: none;
+.whatsapp-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffeb3b;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.whatsapp-btn:hover {
+  background-color: #fbc02d;
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
+/* Seção de clientes */
+.clientes {
+  margin-top: 60px;
+  text-align: center;
+}
 
-    .service h2 {
-        font-size: 1.5rem;
-    }
+.clientes h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
 
-    .service p {
-        font-size: 1rem;
-    }
+.clientes p {
+  font-size: 14px;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid dos clientes */
+.clientes-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cliente {
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  border-radius: 8px;
+  width: 220px;
+  text-align: center;
+}
+
+.cliente img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.cliente p {
+  font-weight: bold;
+}
+
+
+
+/* Imagens do servicos */
+
+/* Estilo da galeria */
+.galeria-casamento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.galeria-casamento img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.galeria-casamento img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 70%;
+  max-height: 70%;
+  border-radius: 10px;
+
+}
+
+.lightbox:target {
+  display: flex;
 }

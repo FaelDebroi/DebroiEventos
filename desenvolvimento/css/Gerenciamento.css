@@ -1,21 +1,22 @@
-.admin-buttons {
+.admin-links {
     margin: 20px;
-}
-
-.admin-buttons button {
-    display: block;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     max-width: 300px;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 15px;
-    background-color: #444;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.admin-buttons button:hover {
+.admin-links a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.admin-links a:hover {
     background-color: #666;
 }

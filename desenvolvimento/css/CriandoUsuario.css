@@ -1,0 +1,140 @@
+/* Reset geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonte e fundo da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #000;
+    padding-top: 90px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Menu fixo superior */
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #003366;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+/* Container principal */
+.form-container {
+    background-color: #fff;
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Título */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #003366;
+}
+
+/* Rótulos */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #003366;
+    outline: none;
+}
+
+/* Grupo de radio buttons */
+.admin-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+/* Alinhamento individual: botão à esquerda, texto à direita */
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Estilização do botão (radio/checkbox) */
+.radio-option input[type="radio"],
+.radio-option input[type="checkbox"] {
+    accent-color: #003366;
+    /* azul escuro no botão */
+}
+
+/* Label leve ao lado do botão */
+.radio-option label {
+    margin: 0;
+    font-weight: normal;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Botão de envio */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #003366;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0055aa;
+}
+
+/* Erros */
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 30px 20px;
+    }
+
+    .admin-checkbox {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

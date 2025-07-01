@@ -43,13 +43,14 @@ if (
     <h1>Gerenciamento do Admin</h1>
 
     
-<div class="admin-buttons">
-<button>Criacao de Chacara</button> <!--- Criacao de Chacara por admin -->
-    <button>Alteracao de Chacara</button> <!--- Criacao de Chacara por admin -->
-    <button>Criacao de Usuario</button> <!--- Criacao de Usuario por admin -->
-    <button>Visualizar todos os clientes</button> <!--- Visualizar todos os clientes  -->
-    <button>Agendamentos e contatos enviados</button> <!--- Solicitacao de Agendamentos e contatos enviados-->
+<div class="admin-links">
+  <a href="CriacaoChacaras.php">Criação de Chácara</a>
+  <a href="alterar_chacara.php">Alteração de Chácara</a>
+  <a href="CriacaoUsuario.php">Criação de Usuário</a>
+  <a href="clientes.php">Visualizar todos os clientes</a>
+  <a href="agendamentos.php">Agendamentos e contatos enviados</a>
 </div>
+
 
 </body>
 
