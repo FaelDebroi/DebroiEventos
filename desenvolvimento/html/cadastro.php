@@ -18,8 +18,8 @@ if(isset($_POST["nome"], $_POST["email"],
     print_r($cpfLimpo);
 
 
-   $inserir = "INSERT INTO cliente (Nome, Email, telefone, Senha, Cpf) 
-            VALUES ('$nome', '$Email', '$telefone', '$senha', '$cpfLimpo')";
+   $inserir = "INSERT INTO cliente (Nome, Email, telefone, Senha, Cpf, Admin) 
+            VALUES ('$nome', '$Email', '$telefone', '$senha', '$cpfLimpo', '0')";
 
     $operacao_inserir = mysqli_query($conecta, $inserir);
     

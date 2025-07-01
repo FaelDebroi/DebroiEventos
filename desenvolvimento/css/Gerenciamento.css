@@ -1,0 +1,21 @@
+.admin-buttons {
+    margin: 20px;
+}
+
+.admin-buttons button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-buttons button:hover {
+    background-color: #666;
+}
