@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `debroieventos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-USE `debroieventos`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: debroieventos
@@ -37,7 +35,7 @@ CREATE TABLE `agendamentovisita` (
   KEY `IdChacara` (`IdChacara`),
   CONSTRAINT `agendamentovisita_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`),
   CONSTRAINT `agendamentovisita_ibfk_2` FOREIGN KEY (`IdChacara`) REFERENCES `chacaras` (`IdChacaras`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +44,7 @@ CREATE TABLE `agendamentovisita` (
 
 LOCK TABLES `agendamentovisita` WRITE;
 /*!40000 ALTER TABLE `agendamentovisita` DISABLE KEYS */;
-INSERT INTO `agendamentovisita` VALUES (1,1,'2025-01-15','10:00:00',2,1,'Gostaria de agendar uma visita à chácara para avaliar o espaço.'),(2,3,'2025-01-17','14:30:00',1,0,'Preciso confirmar a disponibilidade da chácara para a data desejada.'),(3,2,'2025-01-20','09:00:00',3,1,'Confirmar visita para verificar o local para um evento.');
+INSERT INTO `agendamentovisita` VALUES (1,3,'2025-07-16','17:41:00',2,0,'teste'),(2,3,'2025-07-10','17:41:00',2,0,'teste'),(3,3,'2025-07-05','20:41:00',2,0,'teste'),(4,3,'2025-07-01','17:43:00',2,0,'tsete');
 /*!40000 ALTER TABLE `agendamentovisita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +73,7 @@ CREATE TABLE `chacaras` (
   CONSTRAINT `chacaras_ibfk_2` FOREIGN KEY (`IdInfoChacaras`) REFERENCES `infochacaras` (`IdInfoChacaras`),
   CONSTRAINT `chacaras_ibfk_3` FOREIGN KEY (`IdEndereco`) REFERENCES `endereco` (`IdEndereco`),
   CONSTRAINT `chacaras_ibfk_4` FOREIGN KEY (`IdCorretor`) REFERENCES `corretor` (`IdCorretor`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +82,7 @@ CREATE TABLE `chacaras` (
 
 LOCK TABLES `chacaras` WRITE;
 /*!40000 ALTER TABLE `chacaras` DISABLE KEYS */;
-INSERT INTO `chacaras` VALUES (1,1,'Chácara Jardim dos Lagos','Chácara com grande área verde, piscina, churrasqueira e 10 vagas de estacionamento.',1,1,1,''),(2,2,'Chácara Recanto do Sol','Chácara com espaço para eventos, piscina e amplo jardim.',2,2,2,''),(3,3,'Chácara Paraíso','Chácara tranquila com área para pesca e lazer em família.',3,3,3,''),(26,1,'Chácara Bela Vista','Ambiente tranquilo com salão de festas, campo de futebol e áreas para lazer.',2,1,1,''),(27,1,'Chácara Paraíso','Espaço com paisagem deslumbrante, ideal para eventos ao ar livre e retiros.',3,1,1,''),(28,1,'Chácara das Palmeiras','Local espaçoso com áreas para festas, campo de futebol e muito verde.',1,1,1,''),(29,1,'Chácara Vila Verde','Ambiente natural, com churrasqueira e piscina, perfeito para encontros íntimos e eventos.',2,1,1,''),(30,1,'Chácara Lagoa Azul','Com um lindo lago e várias opções de lazer, ideal para eventos corporativos e festas privadas.',3,1,1,''),(31,1,'Chácara Estância do Sol','Chácara com grande área para eventos, campo de futebol, churrasqueira e muito lazer.',1,1,1,''),(32,1,'Chácara Jardim dos Lagos','Chácara com grande área verde, piscina, churrasqueiras e espaço para eventos.',1,1,1,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58790.93122861424!2d-47.07919423852523!3d-22.934267792728473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cd57349fe77d%3A0xb6cd0e13864a622!2sCh%C3%A1cara%20Fortaleza%20Valinhos!5e0!3m2!1spt-BR!2sbr!4v1750721546673!5m2!1spt-BR!2sbr'),(33,2,'Chácara Recanto do Sol','Chácara com espaço para eventos, piscina e área gourmet.',2,2,2,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.7358313345494!2d-47.09160951420935!3d-22.996739687424657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cb7e8955eced%3A0x6e1e52d987ab0e18!2sCh%C3%A1cara%20Dona%20Floripes%20Primavera!5e0!3m2!1spt-BR!2sbr!4v1750721602673!5m2!1spt-BR!2sbr'),(34,3,'Chácara Paraíso','Chácara tranquila com área para pesca e lazer em família.',2,3,3,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29381.8966177006!2d-47.10963416549382!3d-22.99669389162363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cbce25ed510b%3A0xc246e854b55a348a!2sEspa%C3%A7o%20Dona%20Floripes!5e0!3m2!1spt-BR!2sbr!4v1750721652202!5m2!1spt-BR!2sbr');
+INSERT INTO `chacaras` VALUES (1,2,'Chacara fortaleza','O cenário escolhido para celebrar o casamento é fundamental para os noivos imaginarem e criarem a festa dos seus sonhos. Por isso, escolher o espaço demanda cuidado e atenção. A Chácara Fortaleza facilita o processo decisivo e oferece um ambiente tranquilo, irretocável, que pode ser adaptado a qualquer festa.\r\n\r\nEspaços e capacidade\r\n\r\nA Chácara Fortaleza possui uma área de 20 mil metros quadrados, sendo que o casarão em si ocupa 700 metros quadrados. Há 4 quartos, 5 banheiros, piscina semiolímp',1,1,2,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235108.80641256474!2d-47.41472411328121!3d-22.965870399999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c93f36c5dee5%3A0x1ab8483a31456599!2sCh%C3%A1cara%20fortaleza!5e0!3m2!1spt-BR!2sbr!4v1751769279888!5m2!1spt-BR!2sbr'),(2,2,'Chacara fortaleza','O cenário escolhido para celebrar o casamento é fundamental para os noivos imaginarem e criarem a festa dos seus sonhos. Por isso, escolher o espaço demanda cuidado e atenção. A Chácara Fortaleza facilita o processo decisivo e oferece um ambiente tranquilo, irretocável, que pode ser adaptado a qualquer festa.\r\n\r\nEspaços e capacidade\r\n\r\nA Chácara Fortaleza possui uma área de 20 mil metros quadrados, sendo que o casarão em si ocupa 700 metros quadrados. Há 4 quartos, 5 banheiros, piscina semiolímp',2,2,2,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235108.80641256474!2d-47.41472411328121!3d-22.965870399999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c93f36c5dee5%3A0x1ab8483a31456599!2sCh%C3%A1cara%20fortaleza!5e0!3m2!1spt-BR!2sbr!4v1751769279888!5m2!1spt-BR!2sbr');
 /*!40000 ALTER TABLE `chacaras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,10 +99,10 @@ CREATE TABLE `cliente` (
   `Email` varchar(255) NOT NULL,
   `Telefone` varchar(15) NOT NULL,
   `Senha` varchar(100) NOT NULL,
-  `Cpf` bigint(20) NOT NULL,
-  PRIMARY KEY (`IdCliente`),
-  UNIQUE KEY `Cpf` (`Cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Cpf` varchar(11) NOT NULL,
+  `Admin` int(1) DEFAULT NULL,
+  PRIMARY KEY (`IdCliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +111,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'João da Silva','joao.silva@gmail.com','(11) 91234-5678','senha123',12345678901),(2,'Maria Oliveira','maria.oliveira@hotmail.com','(21) 99876-5432','segredo456',98765432100),(3,'Carlos Pereira','carlos.pereira@yahoo.com','(31) 91234-8765','minhasenha789',11223344556);
+INSERT INTO `cliente` VALUES (1,'Rafinha Do grau','rafaeldebroi@gmail.com','19989222780','','42957040832',0),(2,'teste','rafael@gmail.com','32323232','familiasda','2147483647',1),(3,'SANDRA MARIA DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','725848820',0),(4,'SANDRA MARIA DEBROI','sandradebroi@gmail.com','19989222780','123456789','725848820',0),(5,'Gustavinho do Grau','gustavo@gmail.com','19991121440','12345678','725848820',0);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,10 +188,9 @@ CREATE TABLE `endereco` (
   `Estado_Id` int(11) NOT NULL,
   `numero` int(11) NOT NULL,
   PRIMARY KEY (`IdEndereco`),
-  UNIQUE KEY `Cep` (`Cep`),
   KEY `Estado_Id` (`Estado_Id`),
   CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`Estado_Id`) REFERENCES `estado` (`IdEstado`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +199,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (1,12345678901,'Rua das Flores','Centro','São Paulo',26,123),(2,23456789012,'Avenida Brasil','Zona Norte','Rio de Janeiro',19,456),(3,34567890123,'Rua Goiás','Jardim Paulista','Belo Horizonte',13,789);
+INSERT INTO `endereco` VALUES (1,13040,'Rua Pedro De Abreu','Parque Figueira ','Campinas',26,161),(2,13040,'Rua Pedro De Abreu','Parque Figueira ','Campinas',26,161);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +239,7 @@ CREATE TABLE `imgchacaras` (
   `idChacara` int(11) DEFAULT NULL,
   `caminho` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Idimg`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +248,7 @@ CREATE TABLE `imgchacaras` (
 
 LOCK TABLES `imgchacaras` WRITE;
 /*!40000 ALTER TABLE `imgchacaras` DISABLE KEYS */;
-INSERT INTO `imgchacaras` VALUES (1,2,'../img/chacarasimg/chacaraprimaveira.jpg'),(2,3,'../img/chacarasimg/donaflor.jpeg'),(3,26,'../img/chacarasimg/florips.jpeg'),(4,27,'../img/chacarasimg/chacaraprimaveira.jpg'),(5,28,'../img/chacarasimg/donaflor.jpeg'),(6,29,'../img/chacarasimg/florips.jpeg'),(7,30,'../img/chacarasimg/florips.jpeg');
+INSERT INTO `imgchacaras` VALUES (1,53,'chacara1.jpg'),(2,53,'florips.jpg'),(3,53,'chacara2.jpg'),(4,53,'fortaleza.jpg'),(5,53,'chacara3.jpg'),(6,1,'chacara1.jpg'),(7,1,'florips.jpg'),(8,1,'chacara2.jpg'),(9,1,'fortaleza.jpg'),(10,1,'chacara3.jpg'),(11,1,'chacara1.jpg'),(12,1,'florips.jpg'),(13,1,'chacara2.jpg'),(14,1,'fortaleza.jpg'),(15,1,'chacara3.jpg'),(16,2,'chacara1.jpg'),(17,2,'florips.jpg'),(18,2,'chacara2.jpg'),(19,2,'fortaleza.jpg'),(20,2,'chacara3.jpg');
 /*!40000 ALTER TABLE `imgchacaras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +269,7 @@ CREATE TABLE `infochacaras` (
   `Banheiro` int(11) NOT NULL,
   `Estacionamento` int(11) NOT NULL,
   PRIMARY KEY (`IdInfoChacaras`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +278,7 @@ CREATE TABLE `infochacaras` (
 
 LOCK TABLES `infochacaras` WRITE;
 /*!40000 ALTER TABLE `infochacaras` DISABLE KEYS */;
-INSERT INTO `infochacaras` VALUES (1,100,50,'500,00',1,1,4,20),(2,150,80,'800,00',0,1,6,30),(3,200,120,'1.200,00',1,0,8,40);
+INSERT INTO `infochacaras` VALUES (1,500,50,'5000',1,1,3,50),(2,500,50,'5000',1,1,3,50);
 /*!40000 ALTER TABLE `infochacaras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-24  0:27:10
+-- Dump completed on 2025-07-06 19:01:23

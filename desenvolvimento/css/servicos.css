@@ -124,11 +124,6 @@ body {
   font-weight: bold;
 }
 
-
-
-/* Imagens do servicos */
-
-/* Estilo da galeria */
 .galeria-casamento {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -152,27 +147,46 @@ body {
   transform: scale(1.05);
 }
 
-/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
+}
+
+.lightbox:target {
+  display: flex;
 }
 
 .lightbox img {
   max-width: 70%;
   max-height: 70%;
   border-radius: 10px;
-
+  z-index: 1;
 }
 
-.lightbox:target {
-  display: flex;
+/* BOTÃO FECHAR */
+.lightbox .fechar {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 3rem;
+  font-family: 'Segoe UI Symbol', 'Arial', sans-serif;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 10000;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lightbox .fechar:hover {
+  color: #ffde59;
 }

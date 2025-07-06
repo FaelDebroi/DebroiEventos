@@ -66,18 +66,20 @@
         <hr>
         <div class="gallery">
             <div class="imgGrande">
-                <img src="<?php echo $Chacara_dados["caminho"]?>" alt="Foto principal">
+                <img src="../img/uploads/<?php echo htmlspecialchars($imagens[0]['caminho']); ?>" alt="Foto principal">
             </div>
             <div class="imgPequena">
-                <img src="<?php echo $imagens[0]['caminho']; ?>" alt="Foto extra 1">
-                <img src="<?php echo $imagens[1]['caminho']; ?>" alt="Foto extra 2">
-                <img src="<?php echo $imagens[2]['caminho']; ?>" alt="Foto extra 3">
-                <img src="<?php echo $imagens[3]['caminho']; ?>" alt="Foto extra 4">
+                <img src="../img/uploads/<?php echo htmlspecialchars($imagens[1]['caminho']); ?>" alt="Foto extra 1">
+                <img src="../img/uploads/<?php echo htmlspecialchars($imagens[2]['caminho']); ?>" alt="Foto extra 2">
+                <img src="../img/uploads/<?php echo htmlspecialchars($imagens[3]['caminho']); ?>" alt="Foto extra 3">
+                <img src="../img/uploads/<?php echo htmlspecialchars($imagens[4]['caminho']); ?>" alt="Foto extra 4">
             </div>
         </div>
 
         <div class="buttons">
-            <button class="visit">Agendar Visita</button>
+            <a href="agendamento.php?codigo=<?php echo $Chacara_dados["IdChacaras"]?>">
+                <button class="btnAgendamento" id="Agendar visita">Agendar Visita</button>
+            </a>
             <button class="budget">Solicitar Orçamento</button>
         </div>
 
@@ -144,7 +146,8 @@
         <section class="owner">
             <img src="../img/Chacarasimg/donaflor.jpeg" alt="Sandra Debroi">
             <div>
-                <strong>Proprietária: Sandra Debroi</strong><br />
+                <!-- adicionar sql consultor -->
+                <strong>Consultor: Sandra Debroi</strong><br />
                 +20 anos no mercado
             </div>
         </section>

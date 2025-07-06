@@ -13,11 +13,11 @@
     </header>
 
     <section class="servicos">
-        <h1>Serviços</h1>
+        <h1 style="text-align: center">Serviços</h1>
 
         <div class="servicos-container">
             <div class="imagem-servico">
-                <img src="../img/casamento.jpeg" alt="Casamento">
+                <img src="../img/dona.jpeg" alt="Casamento">
             </div>
 
             <div class="itens-servicos">
@@ -36,66 +36,121 @@
             </div>
         </div>
 
-        <h2>Um pouco de nossos servicos</h2>
+        <h2 style="text-align: center; margin-top: 10px">Um pouco de nossos servicos</h2>
         <!-- imagens do servicos -->
+
+
         <div class="galeria-casamento">
-            <a href="#img1"><img src="../img/casamento.jpeg" alt="Casamento 1"></a>
-            <a href="#img2"><img src="../img/casamento.jpeg" alt="Casamento 2"></a>
-            <a href="#img3"><img src="../img/casamento.jpeg" alt="Casamento 3"></a>
-            <a href="#img1"><img src="../img/casamento.jpeg" alt="Casamento 1"></a>
-            <a href="#img2"><img src="../img/casamento.jpeg" alt="Casamento 2"></a>
-            <a href="#img3"><img src="../img/casamento.jpeg" alt="Casamento 3"></a>
-            <a href="#img1"><img src="../img/casamento.jpeg" alt="Casamento 1"></a>
-            <a href="#img2"><img src="../img/casamento.jpeg" alt="Casamento 2"></a>
-            <!-- continue com os outros -->
+            <a href="#img1"><img src="../img/comida1.jpeg" alt="Miniatura 1"></a>
+            <a href="#img2"><img src="../img/comida2.jpeg" alt="Miniatura 2"></a>
+            <a href="#img3"><img src="../img/comida3.jpeg" alt="Miniatura 3"></a>
+            <a href="#img4"><img src="../img/comida4.jpeg" alt="Miniatura 4"></a>
+            <a href="#img5"><img src="../img/comida5.jpeg" alt="Miniatura 5"></a>
+            <a href="#img6"><img src="../img/comida6.jpeg" alt="Miniatura 6"></a>
+            <a href="#img7"><img src="../img/comida7.jpeg" alt="Miniatura 7"></a>
+            <a href="#img8"><img src="../img/comida8.jpeg" alt="Miniatura 8"></a>
         </div>
 
-        <!-- Lightbox para cada imagem -->
+
         <div id="img1" class="lightbox">
-            <a href="#"><img src="../img/casamento.jpeg" alt="Casamento 1"></a>
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida1.jpeg" alt="Casamento 1">
         </div>
 
         <div id="img2" class="lightbox">
-            <a href="#"><img src="../img/casamento.jpeg" alt="Casamento 2"></a>
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida2.jpeg" alt="Casamento 2">
         </div>
 
         <div id="img3" class="lightbox">
-            <a href="#"><img src="../img/casamento.jpeg" alt="Casamento 3"></a>
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida3.jpeg" alt="Casamento 3">
+        </div>
+
+        <div id="img4" class="lightbox">
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida4.jpeg" alt="Casamento 4">
+        </div>
+
+        <div id="img5" class="lightbox">
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida5.jpeg" alt="Casamento 1">
+        </div>
+
+        <div id="img6" class="lightbox">
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida6.jpeg" alt="Casamento 2">
+        </div>
+
+        <div id="img7" class="lightbox">
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida7.jpeg" alt="Casamento 3">
+        </div>
+
+        <div id="img8" class="lightbox">
+            <a href="#" class="fechar" aria-label="Fechar">
+                ×
+            </a>
+
+            <img src="../img/comida8.jpeg" alt="Casamento 4">
         </div>
 
 
+
         <div class="clientes">
-            <h2>Nosso Clientes</h2>
+            <h2>Nossos Clientes</h2>
             <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
                 servir as primeiras empresas na escolha das seguintes propostas:</p>
 
             <div class="clientes-grid">
                 <div class="cliente">
-                    <img src="../img/japa.jpg" alt="Cliente 1">
+                    <img src="../img/cliente1.jpeg" alt="Cliente 1">
                     <h3>Banco Beltran Ltda.</h3>
                     <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
                         servir as primeiras empresas na escolha das seguintes propostas:</p>
 
                 </div>
                 <div class="cliente">
-                    <img src="../img/japa.jpg" alt="Cliente 2">
+                    <img src="../img/cliente2.jpg" alt="Cliente 2">
                     <h3>Mirando Digital</h3>
                     <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
                         servir as primeiras empresas na escolha das seguintes propostas:</p>
 
                 </div>
                 <div class="cliente">
-                    <img src="../img/japa.jpg" alt="Cliente 3">
+                    <img src="../img/cliente3.jpg" alt="Cliente 3">
                     <h3>Parcima Valores Mobilitários</h3>
                     <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
                         servir as primeiras empresas na escolha das seguintes propostas:</p>
                 </div>
-                <div class="cliente">
+                <!-- Comentei porque n tinha mais clientes no canva, ass cleorbeth -->
+                <!--<div class="cliente">
                     <img src="../img/japa.jpg" alt="Cliente 3">
                     <h3>Parcima Valores Mobilitários</h3>
                     <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
                         servir as primeiras empresas na escolha das seguintes propostas:</p>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>

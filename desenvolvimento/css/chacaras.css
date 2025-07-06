@@ -33,7 +33,7 @@ body {
     margin: 15px;
     margin-top: 50px;
     width: 22%;
-    height: 530px;
+    height: 540px;
     width: 350px;
     background-color: #448688;
     /* justify-items: center; */
@@ -52,30 +52,16 @@ body {
     border-radius: 5%;
 }
 
-.btnSobre,
-.btnChacara {
-    padding: 5px;
-    border-radius: 10%;
-    align-content: center;
-    width: 100%;
-    height: 40px;
-    font-size: 20px;
-}
-
-.btnChacara {
-    background-color: #f0ed51;
-}
-
 .divTextoChacara {
     margin-left: 5%;
-    margin-right: 3%;
+    margin-right: 2%;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .divTextoChacara h1 {
     font-size: 18px;
-    width: 320px;
+    width: 310px;
     height: 50px;
 }
 
@@ -87,7 +73,7 @@ body {
 
 .chacaraObservacoes ul {
     list-style: none !important;
-    margin: 15px 10px 15px;
+    margin: 5px 10px 15px;
     padding: 0;
 }
 
@@ -98,8 +84,10 @@ body {
     font-size: 16px;
 }
 
-.divbtnChacara {
 
+/* botao */
+
+.divbtnChacara {
     margin: 20px;
     text-align: center;
     width: 300px;
@@ -107,6 +95,37 @@ body {
     border-radius: 5%;
 }
 
-.btnSobre {
+.btnSobre,
+.btnAgendamento {
     cursor: pointer;
+}
+
+.btnSobre,
+.btnAgendamento {
+    padding: 5px;
+    border-radius: 10%;
+    align-content: center;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+}
+
+
+.btnAgendamento {
+    background-color: #f0ed51;
+}
+
+.btnSobre,
+.btnAgendamento {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btnSobre:hover,
+.btnAgendamento:hover {
+    /* cor um pouco mais escura ao passar o mouse */
+    transform: scale(1.05);
 }

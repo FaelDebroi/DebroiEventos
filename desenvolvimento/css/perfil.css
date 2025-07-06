@@ -1,0 +1,218 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    /* Aumentei para ocupar tela toda */
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../img/fundo.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.perfil-container {
+    background-color: #fff;
+    width: 90%;
+    max-width: 900px;
+    /* aumentei de 700 para 900 */
+    padding: 60px 80px;
+    /* aumentei o padding para mais espaço interno */
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* o resto permanece igual */
+
+h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+    color: #4a4a4a;
+}
+
+.perfil-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.perfil-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.perfil-item strong {
+    width: 150px;
+    font-weight: 600;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ícones simples com emoji */
+.perfil-item strong::before {
+    content: attr(data-icon);
+    font-size: 1.8rem;
+    display: inline-block;
+}
+
+/* Esconder senha real com bullets */
+.senha {
+    letter-spacing: 0.3em;
+}
+
+/* Botão editar perfil */
+.btn-editar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background-color: #764ba2;
+    border: none;
+    padding: 12px 25px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: #5a3680;
+}
+
+/* Scroll estilizado */
+.perfil-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.perfil-container::-webkit-scrollbar-thumb {
+    background-color: #764ba2;
+    border-radius: 20px;
+}
+
+.perfil-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .perfil-container {
+        padding: 40px 25px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    .perfil-item {
+        font-size: 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .perfil-item strong {
+        width: auto;
+        margin-bottom: 6px;
+    }
+
+    .btn-editar {
+        top: 10px;
+        right: 15px;
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+}
+
+
+
+/* Estilo para labels e inputs do formulário */
+form#formEdicao label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.1rem;
+    margin-top: 25px;
+}
+
+form#formEdicao input[type="text"],
+form#formEdicao input[type="email"],
+form#formEdicao input[type="tel"],
+form#formEdicao input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1.8px solid #ccc;
+    font-size: 1.2rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form#formEdicao input:focus {
+    border-color: #764ba2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(118, 75, 162, 0.3);
+}
+
+/* Botões do formulário */
+form#formEdicao button[type="submit"],
+form#formEdicao button[type="button"] {
+    background-color: #764ba2;
+    border: none;
+    padding: 12px 25px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+form#formEdicao button[type="submit"]:hover,
+form#formEdicao button[type="button"]:hover {
+    background-color: #5a3680;
+}
+
+/* Ajuste de espaço entre os botões */
+form#formEdicao div {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    form#formEdicao label {
+        font-size: 1rem;
+    }
+
+    form#formEdicao input {
+        font-size: 1rem;
+    }
+
+    form#formEdicao button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

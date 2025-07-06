@@ -1,70 +1,115 @@
 @import url('./global.css');
 
-.navbar {
-    background-color: #06113C;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.navbar .logo {
-    font-size: 1.5em;
-    font-weight: bold;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar ul {
-    list-style: none;
-    margin: 10;
-    padding: 10;
-    display: flex;
-    gap: 10px;
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-}
-
-.navbar ul li a.active {
-    border-bottom: 2px solid #FFCC00;
-}
-
-/* Fundo */
 .background {
-    background: url('fundo.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: 100vh;
+    background-image: url("../img/fundo.png");
+    min-height: 100vh;
+    /* Garante que o fundo cubra a altura toda */
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 100px 20px;
+    /* Adiciona espaçamento para o conteúdo não colar nas bordas */
+    box-sizing: border-box;
 }
 
-/* Formulário */
 .form-container {
-    background-color: #1B75D1;
+    background-color: rgb(0, 11, 168);
     color: white;
-    padding: 3px;
+    padding: 60px;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    width: 500%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
+    max-width: 500px;
+    /* Limita a largura para melhor leitura em telas grandes */
 }
 
 .form-container h2 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5em;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #ffffff;
 }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.form-row {
+#agendamento-form {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#agendamento-form label,
+select {
+    font-weight: bold;
+    margin-bottom: -5px;
+    /* Aproxima o rótulo do seu campo */
+}
+
+
+#agendamento-form input[type="email"],
+#agendamento-form input[type="tel"],
+#agendamento-form input[type="Chacara"],
+#agendamento-form input[type="time"],
+#agendamento-form select,
+#agendamento-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #f1f1f1;
+    color: #333;
+    box-sizing: border-box;
+}
+
+#agendamento-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#agendamento-form button {
+    padding: 15px;
+    background-color: #ffde59;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#agendamento-form button:hover {
+    background-color: #f2c500;
+    transform: translateY(-2px);
+}
+
+input[readonly] {
+    background-color: #e9ecef;
+    /* Um cinza claro para indicar que está desabilitado */
+    cursor: not-allowed;
+    /* Mostra um cursor de "proibido" ao passar o mouse */
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex: 1 1 100%;
+    }
 }

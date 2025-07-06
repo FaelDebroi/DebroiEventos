@@ -22,19 +22,19 @@
             <div class="swiper-slide"><img src="../img/Chacarasimg/fortaleza01.jpeg" alt="Paisagem bonita">
                 <div class="texto-central">Bem Vindo<br>Debroi Eventos!</div>
             </div>
-            <div class="swiper-slide"><img src="../img/florips.jpg" alt="Paisagem bonita">
+            <div class="swiper-slide"><img src="../img/Chacarasimg/florips.jpg" alt="Paisagem bonita">
                 <div class="texto-central">Espaço <br>Dona Floripes </div>
             </div>
             <div class="swiper-slide"><img src="../img/recantodopirata.jpg" alt="Paisagem bonita">
                 <div class="texto-central">Chácara <br>Recanto do Pirata</div>
             </div>
-            <div class="swiper-slide"><img src="../img/primavera.jpg" alt="Paisagem bonita">
+            <div class="swiper-slide"><img src="../img/Chacarasimg/chacaraprimaveira.jpg" alt="Paisagem bonita">
                 <div class="texto-central">Chácara <br>Primavera Valinhos</div>
             </div>
-            <div class="swiper-slide"><img src="../img/Giardino.jpg" alt="Paisagem bonita">
+            <div class="swiper-slide"><img src="../img/Chacarasimg/giardino.jpg" alt="Paisagem bonita">
                 <div class="texto-central">Giardino di Menis <br>Eventos</div>
             </div>
-            <div class="swiper-slide"><img src="../img/fortaleza.jpg" alt="Paisagem bonita">
+            <div class="swiper-slide"><img src="../img/Chacarasimg/fortaleza.jpg" alt="Paisagem bonita">
                 <div class="texto-central">Chácara <br>Fortaleza Valinhos</div>
             </div>
         </div>
