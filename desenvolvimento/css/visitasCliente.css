@@ -29,6 +29,11 @@ header {
     list-style: none;
 }
 
+.mensagem-erro {
+    color: white;
+    text-align: center;
+}
+
 .chacara-item {
     background: #f5f5f5;
     border-left: 10px solid #2f3ca3;

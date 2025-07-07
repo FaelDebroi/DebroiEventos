@@ -44,11 +44,10 @@ if (
 
 
     <div class="admin-links">
-        <a href="CriacaoChacaras.php">Criação de Chácara</a>
-        <a href="alterar_chacara.php">Alteração de Chácara</a>
-        <a href="CriacaoUsuario.php">Criação de Usuário</a>
-        <a href="clientes.php">Visualizar todos os clientes</a>
-        <a href="agendamentos.php">Agendamentos e contatos enviados</a>
+        <a href="ChacarasGerenciamento.php">Chacaras</a>
+        <a href="visualizarUser.php">Usuarios</a>
+        <a href="gerenciaAgendamentos.php">Agendamentos</a>
+        <a href="contatosSemCadastro.php">Contatos Sem Cadastro</a>
     </div>
 
 

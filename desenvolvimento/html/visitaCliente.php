@@ -53,7 +53,13 @@
         <ul class="lista-chacaras">
 
             <?php  
-                while($agendamentoSolto = mysqli_fetch_assoc($agendamentoConsulta)){ 
+
+            if(!mysqli_num_rows($agendamentoConsulta) > 0){
+                ?><h2 class="mensagem-erro"><strong>Você não tem visita!!</strong></h2><?php
+            }
+                while($agendamentoSolto = mysqli_fetch_assoc($agendamentoConsulta)){
+                    
+                   
             ?>
             <li class="chacara-item">
                 <div class="info-principal">
