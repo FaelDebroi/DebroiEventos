@@ -31,7 +31,7 @@
                      <div><a href="Gerenciamento.php">Gerenciamento</a></div>
 
                      <?php } ?>
-                     <div><a href="perfil.php">Minhas Visitas</a></div>
+                     <div><a href="visitaCliente.php">Minhas Visitas</a></div>
                      <div><a href="perfil.php">Favoritos</a></div>
                      <div><a href="logout.php">Sair</a></div>
                  </div>
