@@ -8,7 +8,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
 /* Seção de Contato */
 .contato {
     background-image: url("../img/casamento.jpg");
@@ -65,23 +64,30 @@ textarea {
     resize: vertical;
 }
 
-.btnEnviarCtt {
-    display: flex;
-    justify-content: flex-end;
-    /* move o botão para a direita */
-    padding-right: 40px;
-}
-
-button {
-    background-color: #ffde59;
-    padding: 10px 50px;
-    font-size: 1.2rem;
+/* Adicionando estilo ao botão */
+.btnEnviarCtt button {
+    background-color: #007bff;
+    /* Cor de fundo do botão */
+    color: white;
+    /* Cor do texto */
+    padding: 12px 20px;
+    /* Espaciamento interno do botão */
     border: none;
+    /* Remover bordas padrão */
     border-radius: 5px;
+    /* Bordas arredondadas */
+    font-size: 16px;
+    /* Tamanho da fonte */
     cursor: pointer;
+    /* Mostra o cursor de mão ao passar o mouse */
     transition: background-color 0.3s ease;
+    /* Efeito de transição na cor */
 }
 
+.btnEnviarCtt button:hover {
+    background-color: #0056b3;
+    /* Cor de fundo quando passar o mouse */
+}
 
 footer {
     text-align: center;

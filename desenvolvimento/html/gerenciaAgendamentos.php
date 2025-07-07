@@ -104,7 +104,10 @@
                         <th>Nome do Cliente</th>
                         <th>Telefone</th>
                         <th>Email</th>
-                        <th>Mensagem</th>
+                        <th>Data de Visita</th>
+                        <th>Horario de Visita</th>
+                        <th>Chacara</th>
+                        <th>Localizacao</th>
                         <th>acoes</th>
                     </tr>
                 </thead>
@@ -116,6 +119,9 @@
                         <td>ana@example.com</td>
                         <td>(11) 98765-4321</td>
                         <td>123.456.789-00</td>
+                        <td>(11) 98765-4321</td>
+                        <td>123.456.789-00</td>
+                        <td>teste</td>
                         <td class="actions">
                             <button class="edit-btn">Editar</button>
                             <button class="delete-btn">Deletar</button>
