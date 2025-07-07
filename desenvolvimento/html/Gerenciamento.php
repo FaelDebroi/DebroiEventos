@@ -45,7 +45,7 @@ if (
 
     <div class="admin-links">
         <a href="ChacarasGerenciamento.php">Chacaras</a>
-        <a href="visualizarUser.php">Usuarios</a>
+        <a href="GerenciamentoUser.php">Usuarios</a>
         <a href="gerenciaAgendamentos.php">Agendamentos</a>
         <a href="contatosSemCadastro.php">Contatos Sem Cadastro</a>
     </div>

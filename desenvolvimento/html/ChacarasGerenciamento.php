@@ -1,3 +1,35 @@
+<?php 
+    session_start();
+    include('conexao.php');
+ $consultaChacaras = "select  
+    c.IdChacaras, 
+    c.Nome AS ChacaraNome, 
+    p.nome AS ProprietarioNome, 
+    ic.qtdMaxConvidados, 
+    ic.qtdMinConvidados,
+    ic.Valor,
+    ic.Wifi, 
+    ic.Banheiro,
+    ic.Estacionamento,
+    e.rua, 
+    e.bairro, 
+    e.cidade, 
+    es.Estados AS NomeEstado
+    from Chacaras c
+    left join proprietario p on p.IdProprietario = c.IdProprietario
+    left join infochacaras ic on ic.IdInfoChacaras = c.IdInfoChacaras
+    left join endereco e on e.IdEndereco = c.IdEndereco
+    left join estado es on es.IdEstado = e.Estado_Id";
+
+   $Chacaras = mysqli_query($conecta, $consultaChacaras);
+
+    if(!$Chacaras){
+        die("Não foi possivel visualizar os agendamentos");
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -100,7 +132,6 @@
                     <th>IdChacara</th>
                     <th>Nome da Chacara</th>
                     <th>Nome do Proprietario</th>
-                    <th>Descrição</th>
                     <th>Qtd max convidados</th>
                     <th>Qtd min convidados</th>
                     <th>Valor</th>
@@ -113,24 +144,34 @@
             </thead>
             <tbody>
                 <!-- Cliente cadastrado -->
+                <?php while($chacara = mysqli_fetch_assoc($Chacaras)){ // percorre todos os nomes ?>
+
                 <tr>
-                    <td>1</td>
-                    <td>Ana Silva</td>
-                    <td>ana@example.com</td>
-                    <td>(11) 98765-4321</td>
-                    <td>********</td>
-                    <td>123.456.789-00</td>
-                    <td>Sim</td>
-                    <td>123.456.789-00</td>
-                    <td>Sim</td>
-                    <td>Sim</td>
-                    <td>Sim</td>
+                    <td><?php echo $chacara["IdChacaras"]; ?></td>
+                    <td><?php echo $chacara["ChacaraNome"]; ?></td>
+                    <td><?php echo $chacara["ProprietarioNome"]; ?></td>
+                    <td><?php echo $chacara["qtdMaxConvidados"]; ?></td>
+                    <td><?php echo $chacara["qtdMinConvidados"]; ?></td>
+                    <td><?php echo $chacara["Valor"]; ?></td>
+                    <td> <?php 
+                            if ($chacara["Wifi"] == 1) {
+                              echo "Sim";
+                            } else {
+                              echo "Não";
+                            }
+                    ?></td>
+                    <td><?php echo $chacara["Banheiro"]; ?></td>
+                    <td><?php echo $chacara["Estacionamento"]; ?></td>
+                    <td><?php echo $chacara["rua"] . ", " . $chacara["bairro"] ." | ".$chacara["cidade"] . " - " . $chacara["NomeEstado"];?>
+                    </td>
+
 
                     <td class="actions">
                         <button class="edit-btn">Editar</button>
                         <button class="delete-btn">Deletar</button>
                     </td>
                 </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>

@@ -1,4 +1,5 @@
 <?php   
+    session_start();
 include('conexao.php');
 
     //consultas 
@@ -109,12 +110,6 @@ include('conexao.php');
         <h1>Gerenciador Contatos nao Cadastrados</h1>
 
         <div class="table-container">
-
-
-
-
-
-
 
             <table>
                 <thead>
