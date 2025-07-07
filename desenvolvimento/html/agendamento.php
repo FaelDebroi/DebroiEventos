@@ -84,7 +84,6 @@ if (isset($_POST["email"],$_POST["telefone"],$_POST["data"],
                 <label for="horario">Horário:</label>
                 <input type="time" id="time" name="time" required>
 
-
                 <label for="mensagem">Mensagem:</label>
                 <textarea id="mensagem" name="Mensagem" rows="4" placeholder="Digite sua mensagem"></textarea>
 

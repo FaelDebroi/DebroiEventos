@@ -1,3 +1,15 @@
+<?php   
+include('conexao.php');
+
+    //consultas 
+    $ConsultaSQL = "select * from contatoclientenaocadastrado;";
+    $CtnClientesSemCadastro = mysqli_query($conecta,$ConsultaSQL);
+
+    if(!$CtnClientesSemCadastro){
+        die("falha na consulta ao banco de dados");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -97,33 +109,34 @@
         <h1>Gerenciador Contatos nao Cadastrados</h1>
 
         <div class="table-container">
+
+
+
+
+
+
+
             <table>
                 <thead>
                     <tr>
-                        <th>Id Agendamento</th>
-                        <th>Nome do Cliente</th>
-                        <th>Data de visita</th>
-                        <th>Hora de visita</th>
-                        <th>Nome da chacara</th>
-                        <th>Confirmacao de agendamento</th>
+                        <th>Id Cliente Nao Cadastrado</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
                         <th>Mensagem</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Cliente cadastrado -->
+                    <?php while($ClienteSemCadastro = mysqli_fetch_assoc($CtnClientesSemCadastro)){ // percorre todos os nomes ?>
                     <tr>
-                        <td>1</td>
-                        <td>Ana Silva</td>
-                        <td>ana@example.com</td>
-                        <td>(11) 98765-4321</td>
-                        <td>********</td>
-                        <td>123.456.789-00</td>
-
-                        <td class="actions">
-                            <button class="edit-btn">Editar</button>
-                            <button class="delete-btn">Deletar</button>
-                        </td>
+                        <td><?php echo $ClienteSemCadastro["Id"]; ?></td>
+                        <td><?php echo $ClienteSemCadastro["Nome"]; ?></td>
+                        <td><?php echo $ClienteSemCadastro["Email"]; ?></td>
+                        <td><?php echo $ClienteSemCadastro["Telefone"]; ?></td>
+                        <td><?php echo $ClienteSemCadastro["Mensagem"]; ?></td>
                     </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

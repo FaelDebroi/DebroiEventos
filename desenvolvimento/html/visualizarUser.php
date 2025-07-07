@@ -1,3 +1,15 @@
+<?php
+include('conexao.php');
+
+    //consultas 
+    $ConsultaSQL = "select * from cliente;";
+    $clientes = mysqli_query($conecta,$ConsultaSQL);
+
+    if(!$clientes){
+        die("falha na consulta ao banco de dados");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -107,19 +119,36 @@
             </thead>
             <tbody>
                 <!-- Cliente cadastrado -->
+                <?php while($cliente = mysqli_fetch_assoc($clientes)){ // percorre todos os nomes ?>
                 <tr>
-                    <td>1</td>
-                    <td>Ana Silva</td>
-                    <td>ana@example.com</td>
-                    <td>(11) 98765-4321</td>
-                    <td>********</td>
-                    <td>123.456.789-00</td>
-                    <td>Sim</td>
+                    <td><?php echo $cliente["IdCliente"]; ?></td>
+                    <td><?php echo $cliente["Nome"]; ?></td>
+                    <td><?php echo $cliente["Email"]; ?></td>
+                    <td><?php echo $cliente["Telefone"]; ?></td>
+                    <td><?php echo $cliente["Senha"]; ?></td>
+                    <td><?php echo $cliente["Cpf"]; ?></td>
+
+                    <td>
+                        <?php 
+                            if ($cliente["Admin"] == 1) {
+                                echo "admin";
+                            } else {
+                                 echo "usuário comum";
+                            }
+                        ?>
+                    </td>
+
+
                     <td class="actions">
                         <button class="edit-btn">Editar</button>
                         <button class="delete-btn">Deletar</button>
                     </td>
                 </tr>
+                <?php } ?>
+
+
+
+
             </tbody>
         </table>
     </div>

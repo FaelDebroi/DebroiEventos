@@ -1,3 +1,36 @@
+<?php   
+include('conexao.php');
+
+    //consultas 
+    $AgendamentoSQl = " SELECT   
+                        a.IdAgendamentoVisita,
+                        c.IdCliente,
+                        c.Nome AS NomeUsuario,
+                        c.Telefone,
+                        c.Email,
+                        ch.Nome AS NomeChacara,
+                        a.Data,
+                        a.Hora, 
+                        e.cep,
+                        e.rua,
+                        e.bairro,
+                        e.cidade,
+                        e.numero,
+                        es.Estados
+                        FROM cliente c
+                        inner JOIN agendamentovisita a ON a.IdCliente = c.IdCliente
+                        inner JOIN chacaras ch ON ch.IdChacaras = a.IdChacara
+                        inner JOIN endereco e ON e.IdEndereco = ch.IdEndereco
+                        INNER JOIN estado es ON es.IdEstado = e.Estado_Id ;";
+    
+    $agendamentoConsulta = mysqli_query($conecta, $AgendamentoSQl);
+
+    if(! $agendamentoConsulta){
+        die("Não foi possivel visualizar os agendamentos");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -72,7 +105,7 @@
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-        text-transform: uppercase;
+
         font-weight: bold;
         margin-bottom: 20px;
         display: block;
@@ -100,33 +133,40 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Id Cliente (nao cadastrado)</th>
+                        <th>Id Agendamento</th>
+                        <th>Id Cliente</th>
                         <th>Nome do Cliente</th>
                         <th>Telefone</th>
                         <th>Email</th>
                         <th>Data de Visita</th>
                         <th>Horario de Visita</th>
-                        <th>Chacara</th>
+                        <th>Nome Chacara</th>
                         <th>Localizacao</th>
                         <th>acoes</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Cliente cadastrado -->
+                    <?php while($Agendamento = mysqli_fetch_assoc($agendamentoConsulta)){ // percorre todos os nomes ?>
                     <tr>
-                        <td>1</td>
-                        <td>Ana Silva</td>
-                        <td>ana@example.com</td>
-                        <td>(11) 98765-4321</td>
-                        <td>123.456.789-00</td>
-                        <td>(11) 98765-4321</td>
-                        <td>123.456.789-00</td>
-                        <td>teste</td>
+                        <td><?php echo $Agendamento["IdAgendamentoVisita"]; ?></td>
+                        <td><?php echo $Agendamento["IdCliente"]; ?></td>
+                        <td><?php echo $Agendamento["NomeUsuario"]; ?></td>
+                        <td><?php echo $Agendamento["Telefone"]; ?></td>
+                        <td><?php echo $Agendamento["Email"]; ?></td>
+                        <td><?php echo $Agendamento["Data"]; ?></td>
+                        <td><?php echo $Agendamento["Hora"]; ?></td>
+                        <td><?php echo $Agendamento["NomeChacara"]; ?></td>
+                        <td><?php echo $Agendamento["rua"] . ", " . $Agendamento["bairro"] ." | ".$Agendamento["cidade"] . " - " . $Agendamento["Estados"];?>
+                        </td>
                         <td class="actions">
                             <button class="edit-btn">Editar</button>
+                            <br>
                             <button class="delete-btn">Deletar</button>
                         </td>
                     </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
