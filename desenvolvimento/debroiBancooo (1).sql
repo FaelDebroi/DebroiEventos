@@ -35,7 +35,7 @@ CREATE TABLE `agendamentovisita` (
   KEY `IdChacara` (`IdChacara`),
   CONSTRAINT `agendamentovisita_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`),
   CONSTRAINT `agendamentovisita_ibfk_2` FOREIGN KEY (`IdChacara`) REFERENCES `chacaras` (`IdChacaras`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `agendamentovisita` (
 
 LOCK TABLES `agendamentovisita` WRITE;
 /*!40000 ALTER TABLE `agendamentovisita` DISABLE KEYS */;
-INSERT INTO `agendamentovisita` VALUES (1,3,'2025-07-16','17:41:00',2,0,'teste'),(2,3,'2025-07-10','17:41:00',2,0,'teste'),(3,3,'2025-07-05','20:41:00',2,0,'teste'),(4,3,'2025-07-01','17:43:00',2,0,'tsete');
+INSERT INTO `agendamentovisita` VALUES (1,3,'2025-07-16','17:41:00',2,0,'teste'),(2,3,'2025-07-10','17:41:00',2,0,'teste'),(3,3,'2025-07-05','20:41:00',2,0,'teste'),(4,3,'2025-07-01','17:43:00',2,0,'tsete'),(5,2,'2025-07-07','01:18:00',1,0,'teste');
 /*!40000 ALTER TABLE `agendamentovisita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +129,7 @@ CREATE TABLE `contatoclientenaocadastrado` (
   `Email` varchar(255) NOT NULL,
   `Mensagem` varchar(550) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `contatoclientenaocadastrado` (
 
 LOCK TABLES `contatoclientenaocadastrado` WRITE;
 /*!40000 ALTER TABLE `contatoclientenaocadastrado` DISABLE KEYS */;
-INSERT INTO `contatoclientenaocadastrado` VALUES (1,'Maria Oliveira','9876543210','maria.oliveira@example.com','Preciso de mais informações sobre as chácaras.'),(2,'Carlos Pereira','5551234567','carlos.pereira@example.com','Estou interessado em agendar uma visita.'),(3,'Ana Costa','4432109876','ana.costa@example.com','Quero saber se há chácaras com área para eventos.');
+INSERT INTO `contatoclientenaocadastrado` VALUES (1,'Maria Oliveira','9876543210','maria.oliveira@example.com','Preciso de mais informações sobre as chácaras.'),(2,'Carlos Pereira','5551234567','carlos.pereira@example.com','Estou interessado em agendar uma visita.'),(3,'Ana Costa','4432109876','ana.costa@example.com','Quero saber se há chácaras com área para eventos.'),(4,'Adalberto','19991121440','19991121440','asd'),(5,'Adalberto','19991121440','19991121440','queria Conhecer a chacara'),(6,'Adalberto','19991121440','19991121440','teste'),(7,'Adalberto','19991121440','19991121440','teste'),(8,'Adalberto','19991121440','19991121440','tete'),(9,'SANDRA MARIA DEBROI','19994750050','19994750050','asdsada');
 /*!40000 ALTER TABLE `contatoclientenaocadastrado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-06 19:01:23
+-- Dump completed on 2025-07-07  1:25:24
