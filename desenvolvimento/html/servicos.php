@@ -117,7 +117,7 @@
         </div>
 
 
-
+        <!-- Criar adicionar comentarios para usuarios logados -->
         <div class="clientes">
             <h2>Nossos Clientes</h2>
             <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
@@ -145,12 +145,12 @@
                         servir as primeiras empresas na escolha das seguintes propostas:</p>
                 </div>
                 <!-- Comentei porque n tinha mais clientes no canva, ass cleorbeth -->
-                <!--<div class="cliente">
-                    <img src="../img/japa.jpg" alt="Cliente 3">
+                <div class="cliente">
+                    <img src="../img/cliente3.jpg" alt="Cliente 3">
                     <h3>Parcima Valores Mobilitários</h3>
                     <p>Desde o começo, prezamos serviços de confiança e responsabilidade. Tivemos a honra de
                         servir as primeiras empresas na escolha das seguintes propostas:</p>
-                </div>-->
+                </div>
             </div>
         </div>
     </section>

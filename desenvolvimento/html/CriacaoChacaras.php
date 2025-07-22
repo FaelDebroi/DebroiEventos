@@ -1,11 +1,9 @@
-<?php require_once("../html/funcoes.php");
-?>
+<?php require_once("../html/funcoes.php"); ?>
 
 <?php
 include('conexao.php');
-include('Segurancagerenciamento.php'); ?>
+include('Segurancagerenciamento.php');
 
-<?php
 //pesquisas
 $proprietarioSQL = "Select * From proprietario";
 $estadosSQl = "Select * from estado";
@@ -18,7 +16,9 @@ $corretor = mysqli_query($conecta, $corretorSQL);
 if (!$Proprietario && !$estados && !$corretor) {
     die("falha na consulta ao banco de dados");
 }
+?>
 
+<?php
 
 //Insercoes
 // Verifica se dados foram enviados via POST
@@ -41,18 +41,11 @@ if (!empty($_POST) && !empty($_FILES) && $MensagemError == "") {
             $Img["type"] === "image/jpg" ||
             $Img["type"] === "image/png"
         ) {
-            $tipo = $Img["type"];
-            echo "<pre>";
-            print_r($Img);
-            echo "</pre>";
-            echo $tipo;
-
-
-            if (empty($MensagemError)) {
-                echo "teste 1";
-                CriarChacara($Imgs, $conecta, $_POST);
-            } else {
+            if (!empty($MensagemError)) {
                 echo "<div style='color:red;'>$MensagemError</div>";
+            } else {
+
+
             }
 
         } else {
@@ -60,6 +53,12 @@ if (!empty($_POST) && !empty($_FILES) && $MensagemError == "") {
             break;
         }
     }
+
+    //altere o nome das imagens
+
+
+    $retornoCC = CriarChacara($Imgs, $conecta, $_POST);
+    echo $retornoCC;
 
 
 }
@@ -89,7 +88,7 @@ if (!empty($_POST) && !empty($_FILES) && $MensagemError == "") {
 
     <h2>Cadastro de Chácara</h2>
     <form method="POST" enctype="multipart/form-data">
-        <label for="nome">Nome da Chácara</label>
+        <label for="nome">Nome da Chácara (Nunca repetir o nome da chacara)</label>
         <input type="text" id="nome" name="nome">
 
         <label>Imagens da Chácara (5 arquivos)</label>
@@ -102,32 +101,34 @@ if (!empty($_POST) && !empty($_FILES) && $MensagemError == "") {
         <?php } ?>
 
 
-        <input type="hidden" name="MAX_FILE_SIZE" value="45000" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
         <input type="file" name="imagem1" accept="image/*" required>
-        <input type="file" name="imagem2" accept="image/*" required>
-        <input type="file" name="imagem3" accept="image/*" required>
-        <input type="file" name="imagem4" accept="image/*" required>
-        <input type="file" name="imagem5" accept="image/*" required>
+        <input type="file" name="imagem2" accept="image/*">
+        <input type="file" name="imagem3" accept="image/*">
+        <input type="file" name="imagem4" accept="image/*">
+        <input type="file" name="imagem5" accept="image/*">
 
         <label for="valor">Valor da Locação</label>
-        <input type="number" name="valor" id="valor" placeholder="Deixe em branco para negociar com cliente">
+        <input type="number" name="valor" id="valor" min="0" step="0.01"
+            placeholder="Deixe em branco para negociar com cliente">
 
         <label for="estacionamento">Vagas de Estacionamento</label>
-        <input type="number" name="estacionamento" id="estacionamento" required>
+        <input type="number" name="estacionamento" id="estacionamento" min="0" step="0.01" required>
 
         <label for="min_convidados">Mínimo de Convidados</label>
-        <input type="number" name="min_convidados" id="min_convidados" required>
+        <input type="number" name="min_convidados" id="min_convidados" min="0" step="0.01" required>
 
         <label for="max_convidados">Máximo de Convidados</label>
-        <input type="number" name="max_convidados" id="max_convidados" required>
+        <input type="number" name="max_convidados" id="max_convidados" min="0" step="0.01" required>
 
         <div class="checkbox-group">
             <label><input type="checkbox" name="wifi" value="Sim"> Wi-Fi no local</label>
             <label><input type="checkbox" name="piscina" value="Sim"> Piscina no local</label>
+            <!-- Adicionar campo de futebol,Permitido animais,Ar-condicionado, Câmeras de segurança e etc  -->
         </div>
 
         <label for="banheiros">Quantidade de Banheiros</label>
-        <input type="number" name="banheiros" id="banheiros" required>
+        <input type="number" name="banheiros" id="banheiros" min="0" step="0.01" required>
 
         <!-- Endereço -->
         <label for="cep">CEP</label>

@@ -1,7 +1,7 @@
-<?php 
-    session_start();
-    include('conexao.php');
- $consultaChacaras = "select  
+<?php
+session_start();
+include('conexao.php');
+$consultaChacaras = "select  
     c.IdChacaras, 
     c.Nome AS ChacaraNome, 
     p.nome AS ProprietarioNome, 
@@ -21,11 +21,11 @@
     left join endereco e on e.IdEndereco = c.IdEndereco
     left join estado es on es.IdEstado = e.Estado_Id";
 
-   $Chacaras = mysqli_query($conecta, $consultaChacaras);
+$Chacaras = mysqli_query($conecta, $consultaChacaras);
 
-    if(!$Chacaras){
-        die("Não foi possivel visualizar os agendamentos");
-    }
+if (!$Chacaras) {
+    die("Não foi possivel visualizar os agendamentos");
+}
 ?>
 
 
@@ -38,81 +38,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Gerenciador de Usuários</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f4f6f8;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f6f8;
+        }
 
-    h1 {
-        margin-top: 150px;
-        color: #333;
-        text-align: center;
-    }
+        h1 {
+            margin-top: 150px;
+            color: #333;
+            text-align: center;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-        background: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    th,
-    td {
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
+        th,
+        td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
 
-    th {
-        background-color: #007BFF;
-        color: white;
+        th {
+            background-color: #007BFF;
+            color: white;
 
-        letter-spacing: 0.05em;
-    }
+            letter-spacing: 0.05em;
+        }
 
-    tr:hover {
-        background-color: #f1f7ff;
-    }
+        tr:hover {
+            background-color: #f1f7ff;
+        }
 
-    .actions button {
-        margin-right: 5px;
-        padding: 6px 12px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        color: white;
-        font-weight: bold;
-    }
+        .actions button {
+            margin-right: 5px;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
 
-    .edit-btn {
-        background-color: #28a745;
-    }
+        .edit-btn {
+            background-color: #28a745;
+        }
 
-    .delete-btn {
-        background-color: #dc3545;
-    }
+        .delete-btn {
+            background-color: #dc3545;
+        }
 
-    .create-btn {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-weight: bold;
-        margin-bottom: 20px;
-        display: block;
-        margin-left: auto;
-        /* margin-right: auto; */
-    }
+        .create-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            /* margin-right: auto; */
+        }
 
-    .create-btn:hover {
-        background-color: #0056b3;
-    }
+        .create-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -144,33 +144,33 @@
             </thead>
             <tbody>
                 <!-- Cliente cadastrado -->
-                <?php while($chacara = mysqli_fetch_assoc($Chacaras)){ // percorre todos os nomes ?>
+                <?php while ($chacara = mysqli_fetch_assoc($Chacaras)) { // percorre todos os nomes ?>
 
-                <tr>
-                    <td><?php echo $chacara["IdChacaras"]; ?></td>
-                    <td><?php echo $chacara["ChacaraNome"]; ?></td>
-                    <td><?php echo $chacara["ProprietarioNome"]; ?></td>
-                    <td><?php echo $chacara["qtdMaxConvidados"]; ?></td>
-                    <td><?php echo $chacara["qtdMinConvidados"]; ?></td>
-                    <td><?php echo $chacara["Valor"]; ?></td>
-                    <td> <?php 
-                            if ($chacara["Wifi"] == 1) {
-                              echo "Sim";
-                            } else {
-                              echo "Não";
-                            }
-                    ?></td>
-                    <td><?php echo $chacara["Banheiro"]; ?></td>
-                    <td><?php echo $chacara["Estacionamento"]; ?></td>
-                    <td><?php echo $chacara["rua"] . ", " . $chacara["bairro"] ." | ".$chacara["cidade"] . " - " . $chacara["NomeEstado"];?>
-                    </td>
+                    <tr>
+                        <td><?php echo $chacara["IdChacaras"]; ?></td>
+                        <td><?php echo $chacara["ChacaraNome"]; ?></td>
+                        <td><?php echo $chacara["ProprietarioNome"]; ?></td>
+                        <td><?php echo $chacara["qtdMaxConvidados"]; ?></td>
+                        <td><?php echo $chacara["qtdMinConvidados"]; ?></td>
+                        <td><?php echo $chacara["Valor"]; ?></td>
+                        <td> <?php
+                        if ($chacara["Wifi"] == 1) {
+                            echo "Sim";
+                        } else {
+                            echo "Não";
+                        }
+                        ?></td>
+                        <td><?php echo $chacara["Banheiro"]; ?></td>
+                        <td><?php echo $chacara["Estacionamento"]; ?></td>
+                        <td><?php echo $chacara["rua"] . ", " . $chacara["bairro"] . " | " . $chacara["cidade"] . " - " . $chacara["NomeEstado"]; ?>
+                        </td>
 
 
-                    <td class="actions">
-                        <button class="edit-btn">Editar</button>
-                        <button class="delete-btn">Deletar</button>
-                    </td>
-                </tr>
+                        <td class="actions">
+                            <button class="edit-btn">Editar</button>
+                            <button class="delete-btn" onclick="alert('Tem certeza que deseja deletar?')">Deletar</button>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>

@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    include('conexao.php');
-    
+session_start();
+include('conexao.php');
+
 if (
     isset($_SESSION["user_portal"]) && // Verifica se a sessão do usuário existe
     isset($informacaoUser["Admin"]) && // Verifica se a informação do usuário está carregada
@@ -9,11 +9,11 @@ if (
 ) {
     // Acesso liberado -admim
 } else {
-    if(isset($_SESSION["user_portal"]) && $informacaoUser["Admin"] == 0){
+    if (isset($_SESSION["user_portal"]) && $informacaoUser["Admin"] == 0) {
         // usuario logado mas sem acesso
         header("Location: index.php");
         exit;
-    }else{
+    } else {
         //  Acesso negado- sem usuario logado
         header("Location: logout.php");
         exit;
@@ -48,6 +48,8 @@ if (
         <a href="GerenciamentoUser.php">Usuarios</a>
         <a href="gerenciaAgendamentos.php">Agendamentos</a>
         <a href="contatosSemCadastro.php">Contatos Sem Cadastro</a>
+        <a href="contatosSemCadastro.php">Criacao de proprietarios</a>
+        <a href="contatosSemCadastro.php">Criacao de Corretor</a>
     </div>
 
 
