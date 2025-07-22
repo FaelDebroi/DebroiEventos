@@ -20,11 +20,10 @@
 
 ?>
 
-
-
 <?php   
   include('conexao.php');
   include('Segurancagerenciamento.php'); ?>
+
 <?php
     //pesquisas
     $proprietarioSQL = "Select * From proprietario";
@@ -39,12 +38,54 @@
         die("falha na consulta ao banco de dados");
     }
 
-
+    $array_erro = array(
+        UPLOAD_ERR_OK => "Sem erro.",
+        UPLOAD_ERR_INI_SIZE => "O arquivo enviado excede o limite definido na diretiva upload_max_filesize do php.ini.",
+        UPLOAD_ERR_FORM_SIZE => "O arquivo excede o limite definido em 45kb no formulário HTML",
+        UPLOAD_ERR_PARTIAL => "O upload do arquivo foi feito parcialmente.",
+        UPLOAD_ERR_NO_FILE => "Nenhum arquivo foi enviado.",
+        UPLOAD_ERR_NO_TMP_DIR => "Pasta temporária ausente.",
+        UPLOAD_ERR_CANT_WRITE => "Falha em escrever o arquivo em disco.",
+        UPLOAD_ERR_EXTENSION => "Uma extensão do PHP interrompeu o upload do arquivo."
+    ); 
 
   //Insercoes
 // Verifica se dados foram enviados via POST
-if (!empty($_POST) && !empty($_FILES)){
+    $MensagemError ="";
+   
+   
+    if (!empty($_POST) && !empty($_FILES) && $MensagemError == ""){
 
+    $Imgs = [$_FILES["imagem1"], $_FILES["imagem2"], $_FILES["imagem3"], $_FILES["imagem4"], $_FILES["imagem5"]]; 
+
+    foreach ($Imgs as $Img) {
+    if ($Img["error"] != 0) { 
+        $MensagemError = "Erro no arquivo imagem " . ($key + 1) . ": " . $array_erro[$Img["error"]];
+        break; 
+    }
+
+         // Verifica o tipo do arquivo
+    if (
+        $Img["type"] === "image/jpeg" || 
+        $Img["type"] === "image/jpg" || 
+        $Img["type"] === "image/png"
+    ) {
+        $tipo =  $Img["type"];
+        echo "<pre>";
+        print_r($Img);
+        echo "</pre>";
+        echo $tipo;
+        echo "teste 1";
+      
+    } else {
+        $MensagemError = "Aceitamos somente jpeg, jpg e png!";
+        break; 
+    }
+    }
+
+   
+
+     if (empty($MensagemError)) {
     // Criacao da infochacaras para chacara
     $max_convidados = $_POST["max_convidados"];
     $min_convidados = $_POST["min_convidados"];
@@ -67,17 +108,8 @@ if (!empty($_POST) && !empty($_FILES)){
     $IdCorretor = $_POST["corretor"];
     $LocUrlMaps = $_POST["url_maps"];
 
-    // imagens
-    $img1 = $_FILES["imagem1"];
-    $img2 = $_FILES["imagem2"];
-    $img3 = $_FILES["imagem3"];
-    $img4 = $_FILES["imagem4"];
-    $img5 = $_FILES["imagem5"];
 
-    
-
-
-  if(!empty($_POST["wifi"])){
+    if(!empty($_POST["wifi"])){
         $wifi = 1;
     }else{
         $wifi = 0;
@@ -121,40 +153,28 @@ if (!empty($_POST) && !empty($_FILES)){
         die("Erro ao inserir em chacaras: " . mysqli_error($conn));
     }
 
-    // 4. inserir imagens 
-    $pasta            = "uploads";
-    $pasta_temporaria = $_FILES["imagem1"]["tmp_name"];
-    $arquivo1          = $_FILES["imagem1"]["name"];
-    move_uploaded_file($pasta_temporaria,"../img/" . $pasta . "/" . $arquivo1);
-    $insertImg1 = "INSERT INTO imgchacaras (idChacara, caminho) VALUES ('$idChacara','$arquivo1');";
-    mysqli_query($conecta, $insertImg1);
+    // // 4. inserir imagens 
 
-    $pasta_temporaria = $_FILES["imagem2"]["tmp_name"];
-    $arquivo2          = $_FILES["imagem2"]["name"];
-    move_uploaded_file($pasta_temporaria,"../img/" . $pasta . "/" . $arquivo2);
-    $insertImg2 = "INSERT INTO imgchacaras (idChacara, caminho) VALUES ('$idChacara','$arquivo2');";
-    mysqli_query($conecta, $insertImg2);
+    foreach ($Imgs as $Img) {
+       
 
+    $pasta_temporaria = $Img["tmp_name"];
+    $arquivo_nome     = $Img["name"];
+    $pasta           = "uploads/";
 
-    $pasta_temporaria = $_FILES["imagem3"]["tmp_name"];
-    $arquivo3          = $_FILES["imagem3"]["name"];
-    move_uploaded_file($pasta_temporaria,"../img/" . $pasta . "/" .$arquivo3);
-    $insertImg3 = "INSERT INTO imgchacaras (idChacara, caminho) VALUES ('$idChacara','$arquivo3');";
-    mysqli_query($conecta, $insertImg3);
-
-
-    $pasta_temporaria = $_FILES["imagem4"]["tmp_name"];
-    $arquivo4          = $_FILES["imagem4"]["name"];
-    move_uploaded_file($pasta_temporaria,"../img/" . $pasta . "/" . $arquivo4);
-    $insertImg4 = "INSERT INTO imgchacaras (idChacara, caminho) VALUES ('$idChacara','$arquivo4');";
-    mysqli_query($conecta, $insertImg4);
-
-
-    $pasta_temporaria = $_FILES["imagem5"]["tmp_name"];
-    $arquivo5          = $_FILES["imagem5"]["name"];
-    move_uploaded_file($pasta_temporaria,"../img/" . $pasta . "/" . $arquivo5);
-    $insertImg5 = "INSERT INTO imgchacaras (idChacara, caminho) VALUES ('$idChacara','$arquivo5');";
-    mysqli_query($conecta, $insertImg5);
+     // mover arquivo para pasta destino (exemplo)
+        if (move_uploaded_file($pasta_temporaria, "../img/" . $pasta . $arquivo_nome)) {
+            echo "Arquivo $arquivo_nome enviado com sucesso!<br>";
+            $insertImg = "INSERT INTO imgchacaras (idChacara, caminho) VALUES ('$idChacara','$arquivo_nome');";
+            
+            // Executa a query - assumindo $conecta já conectado
+             mysqli_query($conecta, $insertImg) or die(mysqli_error($conecta));
+             header("location:gerenciamento.php");
+        } else {
+            echo "Erro ao enviar o arquivo $arquivo_nome.<br>";
+        }
+        }
+    }
 }
 ?>
 
@@ -171,34 +191,45 @@ if (!empty($_POST) && !empty($_FILES)){
 </head>
 
 <body>
-    <header class="menu-fixo">
+    <header>
         <?php //include 'menuBarra.php'; ?>
     </header>
+
     <br><br><br><br>
 
 
     <h2>Cadastro de Chácara</h2>
     <form method="POST" enctype="multipart/form-data">
         <label for="nome">Nome da Chácara</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome">
 
-        <label>Imagens da Chacara (5 arquivos)</label>
+        <label>Imagens da Chácara (5 arquivos)</label>
+
+
+        <?php if (!empty($MensagemError)) { ?>
+        <div style="color: red; font-weight: bold; margin-bottom: 8px;">
+            <?= htmlspecialchars($MensagemError) ?>
+        </div>
+        <?php } ?>
+
+
+        <input type="hidden" name="MAX_FILE_SIZE" value="45000" />
         <input type="file" name="imagem1" accept="image/*" required>
-        <input type="file" name="imagem2" accept="image/*" required>
-        <input type="file" name="imagem3" accept="image/*" required>
-        <input type="file" name="imagem4" accept="image/*" required>
-        <input type="file" name="imagem5" accept="image/*" required>
+        <input type="file" name="imagem2" accept="image/*">
+        <input type="file" name="imagem3" accept="image/*">
+        <input type="file" name="imagem4" accept="image/*">
+        <input type="file" name="imagem5" accept="image/*">
 
-        <label for="valor">Valor da Locação (Se nao definir valor, sera como a definir com o cliente)</label>
-        <input type="number" name="valor" id="valor" required>
+        <label for="valor">Valor da Locação</label>
+        <input type="number" name="valor" id="valor" placeholder="Deixe em branco para negociar com cliente">
 
-        <label for="estacionamento">Quantidade de Vagas para estacionamento no local</label>
+        <label for="estacionamento">Vagas de Estacionamento</label>
         <input type="number" name="estacionamento" id="estacionamento" required>
 
-        <label for="min_convidados">Quantidade Mínima de Convidados</label>
+        <label for="min_convidados">Mínimo de Convidados</label>
         <input type="number" name="min_convidados" id="min_convidados" required>
 
-        <label for="max_convidados">Quantidade Máxima de Convidados</label>
+        <label for="max_convidados">Máximo de Convidados</label>
         <input type="number" name="max_convidados" id="max_convidados" required>
 
         <div class="checkbox-group">
@@ -209,8 +240,7 @@ if (!empty($_POST) && !empty($_FILES)){
         <label for="banheiros">Quantidade de Banheiros</label>
         <input type="number" name="banheiros" id="banheiros" required>
 
-        <!-- Endereco -->
-
+        <!-- Endereço -->
         <label for="cep">CEP</label>
         <input type="text" name="cep" id="cep" required placeholder="00000-000">
 
@@ -229,43 +259,31 @@ if (!empty($_POST) && !empty($_FILES)){
         <label for="estado">Estado</label>
         <select name="estado" id="estado" required>
             <option value="">Selecione...</option>
-            <?php  
-            while($estadoSolto = mysqli_fetch_assoc($estados)){ // percorre todos os nomes
-             ?>
-            <option value="<?php echo $estadoSolto["IdEstado"]; ?>"> <?php echo $estadoSolto["Estados"]; ?></option>
-            <?php
-              }
-            ?>
+            <?php while($estadoSolto = mysqli_fetch_assoc($estados)){ ?>
+            <option value="<?php echo $estadoSolto["IdEstado"]; ?>">
+                <?php echo $estadoSolto["Estados"]; ?>
+            </option>
+            <?php } ?>
         </select>
-
 
         <label for="corretor">Nome do Corretor:</label>
-
         <select name="corretor" id="corretor" required>
             <option value="">Selecione...</option>
-            <?php  
-             while($corretorSolto = mysqli_fetch_assoc($corretor)){ // percorre todos os nomes
-             ?>
-            <option value="<?php echo $corretorSolto["IdCorretor"]; ?>"> <?php echo $corretorSolto["Nome"]; ?></option>
-            <?php
-              }
-            ?>
+            <?php while($corretorSolto = mysqli_fetch_assoc($corretor)){ ?>
+            <option value="<?php echo $corretorSolto["IdCorretor"]; ?>">
+                <?php echo $corretorSolto["Nome"]; ?>
+            </option>
+            <?php } ?>
         </select>
-
-
 
         <label for="proprietario">Nome do Proprietário</label>
         <select name="proprietario" id="proprietario" required>
             <option value="">Selecione...</option>
-            <?php  
-            while($Linha = mysqli_fetch_assoc($Proprietario)){ // percorre todos os nomes
-           
-             ?>
-            <option value="<?php echo $Linha["IdProprietario"]; ?>"> <?php echo $Linha["Nome"]; ?></option>
-
-            <?php
-              }
-            ?>
+            <?php while($Linha = mysqli_fetch_assoc($Proprietario)){ ?>
+            <option value="<?php echo $Linha["IdProprietario"]; ?>">
+                <?php echo $Linha["Nome"]; ?>
+            </option>
+            <?php } ?>
         </select>
 
         <label for="descricao">Descrição da Chácara</label>

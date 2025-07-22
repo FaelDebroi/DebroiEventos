@@ -43,6 +43,11 @@
          <a href="login.php"><b>Login </b></a>
 
          <?php }?>
+
+         <a
+             href="https://wa.me/5519992313281?text=Olá!%20Gostaria%20de%20consultar%20o%20cardápio%20do%20buffet%20completo">
+             <img src="../img/whatsApp.png" alt="WhatsApp" width="35">
+         </a>
          <!-- criar um modelo que aparece a o perfil do usuario -->
      </nav>
  </header>

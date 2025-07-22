@@ -15,7 +15,7 @@
 
     // consultas 
     $usuario_id = $_SESSION["user_portal"];
-    $ClienteSQl = "select * from Cliente c where c.IdCliente = '$usuario_id'";
+    $ClienteSQl = "select * from usuario c where c.IdCliente = '$usuario_id'";
     $ClienteConsulta = mysqli_query($conecta, $ClienteSQl);
     $Cliente = mysqli_fetch_assoc($ClienteConsulta);
 

@@ -12,7 +12,7 @@
 
     //verificacao de usuario atual 
     if(!empty($_SESSION["user_portal"])){
-        $user  = "select * from cliente c where c.IdCliente ='{$_SESSION["user_portal"]}'";
+        $user  = "select * from usuario c where c.IdCliente ='{$_SESSION["user_portal"]}'";
         $acesso = mysqli_query($conecta, $user);
 
         if(!$acesso){

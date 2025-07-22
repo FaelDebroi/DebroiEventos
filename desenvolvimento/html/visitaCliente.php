@@ -16,7 +16,7 @@
                         e.cidade,
                         e.numero,
                         es.Estados
-                        FROM cliente c
+                        FROM usuario c
                         inner JOIN agendamentovisita a ON a.IdCliente = c.IdCliente
                         inner JOIN chacaras ch ON ch.IdChacaras = a.IdChacara
                         inner JOIN endereco e ON e.IdEndereco = ch.IdEndereco

@@ -19,10 +19,8 @@ header .logo {
 }
 
 nav a {
-    margin-left: 15px;
     color: white;
     text-decoration: none;
-    font-weight: bold;
 }
 
 .container {
@@ -163,8 +161,11 @@ footer img {
 
 .imgGrande img {
     width: 650px;
-    height: auto;
+    height: 435px;
     border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+
 }
 
 .imgPequena {

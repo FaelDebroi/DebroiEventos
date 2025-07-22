@@ -1,6 +1,6 @@
 <?php
     session_start();
-include('conexao.php');
+    include('conexao.php');
 
     //consultas 
     $ConsultaSQL = "select * from cliente;";

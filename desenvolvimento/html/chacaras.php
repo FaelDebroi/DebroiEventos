@@ -59,7 +59,8 @@ $Atrativos = implode(", ", $atrativos);
         <div class="chacara">
             <div class="imgChacara">
                 <?php if (!empty($Linha['caminho'])): ?>
-                <img src="../img/uploads/<?php echo $Linha['caminho']; ?>" class="imagemlogo" alt="Logo">
+                <img src="../img/uploads/<?php echo $Linha['caminho']; ?>" class="imagemlogo"
+                    alt="<?php echo $Linha['caminho']; ?>">
                 <?php else: ?>
                 <!-- img -->
                 <img src="../img/Chacarasimg/fortaleza.jpg" class="imagemlogo" alt="Logo padrão">

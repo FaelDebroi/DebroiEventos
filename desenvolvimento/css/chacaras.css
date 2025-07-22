@@ -36,8 +36,6 @@ body {
     height: 540px;
     width: 350px;
     background-color: #448688;
-    /* justify-items: center; */
-    border-radius: 5%;
 }
 
 .imgChacara {
@@ -50,6 +48,8 @@ body {
     width: 350px;
     height: 250px;
     border-radius: 5%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .divTextoChacara {

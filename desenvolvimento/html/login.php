@@ -1,14 +1,28 @@
 <?php
     
     include('conexao.php');
-
     session_start();
+
+if (
+    isset($_SESSION["user_portal"]) // Verifica se a sessão do usuário existe
+) {
+    // Acesso liberado -admim
+     header("Location: index.php");
+        exit;
+}
+
+    if (
+    isset($_SESSION["user_portal"]) && // Verifica se a sessão do usuário existe
+    isset($informacaoUser["Admin"])  // Verifica se a informação do usuário está carregada
+) {
+    header("Location: index.php");
+}
 
     if(isset($_POST["email"])){
         $email = $_POST["email"];
         $senha = $_POST["password"];
 
-        $login  = "select * from cliente WHERE Email = '{$email}' and senha = '{$senha}'";
+        $login  = "select * from usuario WHERE Email = '{$email}' and senha = '{$senha}'";
 
         $acesso = mysqli_query($conecta,$login);
 
