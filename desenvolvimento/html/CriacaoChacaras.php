@@ -8,7 +8,9 @@ include('Segurancagerenciamento.php');
 $proprietarioSQL = "Select * From proprietario";
 $estadosSQl = "Select * from estado";
 $corretorSQL = "Select * from corretor";
+$ChacarasSql = "select c.nome from chacaras c ";
 
+$ChacarasConsulta = mysqli_query($conecta, $ChacarasSql);
 $estados = mysqli_query($conecta, $estadosSQl);
 $Proprietario = mysqli_query($conecta, $proprietarioSQL);
 $corretor = mysqli_query($conecta, $corretorSQL);
@@ -24,43 +26,38 @@ if (!$Proprietario && !$estados && !$corretor) {
 // Verifica se dados foram enviados via POST
 $MensagemError = "";
 
-
-if (!empty($_POST) && !empty($_FILES) && $MensagemError == "") {
-
-    $Imgs = [$_FILES["imagem1"], $_FILES["imagem2"], $_FILES["imagem3"], $_FILES["imagem4"], $_FILES["imagem5"]];
-
-    foreach ($Imgs as $Img) {
-        if ($Img["error"] != 0) {
-            $MensagemError = "Erro no arquivo imagem : " . mostrarAviso($Img["error"]);
-            break;
-        }
-
-        // Verifica o tipo do arquivo
-        if (
-            $Img["type"] === "image/jpeg" ||
-            $Img["type"] === "image/jpg" ||
-            $Img["type"] === "image/png"
-        ) {
-            if (!empty($MensagemError)) {
-                echo "<div style='color:red;'>$MensagemError</div>";
-            } else {
+if (!empty($_POST) && !empty($_FILES)) {
 
 
-            }
-
-        } else {
-            $MensagemError = "Aceitamos somente jpeg, jpg e png!";
+    foreach ($ChacarasConsulta as $chacara) {
+        if ($_POST["nome"] == $chacara["nome"]) {
+            $MensagemError = "Esse nome de chacara ja existe, crie uma chacara com um nome diferente!";
             break;
         }
     }
 
-    //altere o nome das imagens
+    if (empty($MensagemError)) {
+        $Imgs = [$_FILES["imagem1"], $_FILES["imagem2"], $_FILES["imagem3"], $_FILES["imagem4"], $_FILES["imagem5"]];
+        foreach ($Imgs as $Img) {
+            $tiposAceitos = ["image/jpeg", "image/jpg", "image/png"];
+            if (!in_array($Img["type"], $tiposAceitos)) {
+                if ($Img["type"] == null) {
+                    $MensagemError = "Voce precisa enviar todas as imagens";
+                    break;
+                }
+                $MensagemError = "Aceitamos somente jpeg, jpg e png!";
+                break;
+            }
 
-
-    $retornoCC = CriarChacara($Imgs, $conecta, $_POST);
-    echo $retornoCC;
-
-
+            if ($Img["error"] != 0) {
+                $MensagemError = "Erro no arquivo imagem : " . mostrarAviso($Img["error"]);
+                break;
+            }
+        }
+    }
+    if (empty($MensagemError)) {
+        $retornoCC = CriarChacara($Imgs, $conecta, $_POST);
+    }
 }
 
 
@@ -96,13 +93,13 @@ if (!empty($_POST) && !empty($_FILES) && $MensagemError == "") {
 
         <?php if (!empty($MensagemError)) { ?>
             <div style="color: red; font-weight: bold; margin-bottom: 8px;">
-                <?= htmlspecialchars($MensagemError) ?>
+                <?= htmlspecialchars($MensagemError); ?>
             </div>
         <?php } ?>
 
 
         <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-        <input type="file" name="imagem1" accept="image/*" required>
+        <input type="file" name="imagem1" accept="image/*">
         <input type="file" name="imagem2" accept="image/*">
         <input type="file" name="imagem3" accept="image/*">
         <input type="file" name="imagem4" accept="image/*">
