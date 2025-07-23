@@ -94,6 +94,24 @@ if (!$Chacaras) {
             background-color: #dc3545;
         }
 
+        .actions .edit-btn,
+        .actions .delete-btn {
+            width: 80px;
+            /* mesma largura */
+            height: 30px;
+            /* mesma altura */
+            padding: 6px 0;
+            /* vertical ajustado, horizontal zerado */
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
         .create-btn {
             background-color: #007bff;
             color: white;
@@ -104,10 +122,9 @@ if (!$Chacaras) {
             cursor: pointer;
             text-transform: uppercase;
             font-weight: bold;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            /* margin-right: auto; */
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
         }
 
         .create-btn:hover {
@@ -123,9 +140,7 @@ if (!$Chacaras) {
 
     <div class="TudoviewUser">
         <h1>Gerenciador de Chacaras</h1>
-        <a href="CriacaoChacaras.php">
-            <button class="create-btn">Criar Chacara</button>
-        </a>
+        <a href="CriacaoChacaras.php" class="create-btn">Criar Chácara</a>
         <table>
             <thead>
                 <tr>

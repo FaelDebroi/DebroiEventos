@@ -1,0 +1,87 @@
+html,
+body {
+    height: 100%;
+    /* altura total para o flex funcionar corretamente */
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    flex: 1 0 auto;
+    /* cresce para empurrar o rodapé */
+    padding: 20px 40px;
+    /* padding horizontal para separar do canto */
+    box-sizing: border-box;
+    /* Se quiser pode adicionar max-width e centralizar */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Rodapé simples fixo na base */
+.rodape-simples {
+    flex-shrink: 0;
+    background-color: #1c1c1c;
+    color: white;
+    width: 100%;
+    /* largura total */
+    text-align: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Links dos ícones */
+.icon-link {
+    color: #00bfff;
+    text-decoration: none;
+    margin: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    /* evita quebra dentro do link */
+}
+
+.icon-link:hover {
+    text-decoration: underline;
+}
+
+.icon-link svg {
+    margin-right: 6px;
+    height: 20px;
+    width: 20px;
+}
+
+/* Responsividade: telas menores */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    .icon-link {
+        margin: 0 6px;
+        font-size: 14px;
+    }
+
+    .rodape-simples {
+        padding: 20px 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px 15px;
+    }
+
+    .icon-link {
+        font-size: 12px;
+        margin: 0 4px;
+    }
+
+    .rodape-simples {
+        padding: 15px 8px;
+        font-size: 12px;
+    }
+}

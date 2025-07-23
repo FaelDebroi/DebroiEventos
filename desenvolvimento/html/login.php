@@ -1,52 +1,52 @@
 <?php
-    
-    include('conexao.php');
-    session_start();
+
+include('conexao.php');
+session_start();
 
 if (
     isset($_SESSION["user_portal"]) // Verifica se a sessão do usuário existe
 ) {
     // Acesso liberado -admim
-     header("Location: index.php");
-        exit;
+    header("Location: index.php");
+    exit;
 }
 
-    if (
+if (
     isset($_SESSION["user_portal"]) && // Verifica se a sessão do usuário existe
     isset($informacaoUser["Admin"])  // Verifica se a informação do usuário está carregada
 ) {
     header("Location: index.php");
 }
 
-    if(isset($_POST["email"])){
-        $email = $_POST["email"];
-        $senha = $_POST["password"];
+if (isset($_POST["email"])) {
+    $email = $_POST["email"];
+    $senha = $_POST["password"];
 
-        $login  = "select * from usuario WHERE Email = '{$email}' and senha = '{$senha}'";
+    $login = "select * from usuario WHERE Email = '{$email}' and senha = '{$senha}'";
 
-        $acesso = mysqli_query($conecta,$login);
+    $acesso = mysqli_query($conecta, $login);
 
-        if(!$acesso){
-            die("falha na consulta ao banco");
+    if (!$acesso) {
+        die("falha na consulta ao banco");
+    }
+
+    $informacao = mysqli_fetch_assoc($acesso);
+
+    $msg = json_encode($informacao, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    if (!empty($informacao["IdCliente"])) {
+        $_SESSION["user_portal"] = $informacao["IdCliente"];
+
+        //criar if para admin e usuario normal
+        if ($informacao["Admin"] == 1) {
+            header("location:Gerenciamento.php");
+        } else {
+            header("location:index.php");
         }
-
-        $informacao = mysqli_fetch_assoc($acesso);
-
-        $msg = json_encode($informacao, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        
-         if (!empty($informacao["IdCliente"])){
-            $_SESSION["user_portal"] = $informacao["IdCliente"];
-
-            //criar if para admin e usuario normal
-                if($informacao["Admin"] == 1){
-                    header("location:Gerenciamento.php");
-                }else{
-                    header("location:index.php");
-                }
-                    exit;
-        }else {
-            $msg = "<strong>Erro interno: ID do cliente não encontrado.</strong>";
-        }
+        exit;
+    } else {
+        $msg = "<strong>Erro interno: ID do cliente não encontrado.</strong>";
+    }
 }
 ?>
 
@@ -86,9 +86,11 @@ if (
 
                 <button type="submit">Confirmar</button>
                 <p>Não tem conta? <a href="cadastro.php">Crie uma nova!</a></p>
-                <?php if(isset($msg)){?>
-                <p><?php echo $msg?></p>
-                <?php  } ?>
+                <p>ou <br><a href="recuperarSenha.php">Esqueceu sua Senha?</a></p>
+
+                <?php if (isset($msg)) { ?>
+                    <p><?php echo $msg ?></p>
+                <?php } ?>
             </form>
         </div>
     </div>

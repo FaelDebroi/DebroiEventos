@@ -7,30 +7,31 @@ body,
 html {
     height: 100%;
     width: 100%;
-    /* Aumentei para ocupar tela toda */
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url("../img/fundo.png");
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    /* padding-top: 20px; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../img/fundo.png");
     color: #333;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 .perfil-container {
     background-color: #fff;
-    width: 90%;
-    max-width: 900px;
-    /* aumentei de 700 para 900 */
-    padding: 60px 80px;
-    /* aumentei o padding para mais espaço interno */
+    width: 1050px;
+    /* max-width: ; */
+    padding: 30px 80px;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    max-height: 90vh;
-    overflow-y: auto;
+    max-height: none;
+    overflow: hidden;
     position: relative;
+    margin-top: 80px;
+
 }
 
 /* o resto permanece igual */
@@ -81,7 +82,8 @@ h2 {
 
 /* Botão editar perfil */
 .btn-editar {
-    position: absolute;
+    /* position: absolute; */
+    margin-top: 50px;
     top: 20px;
     right: 30px;
     background-color: #764ba2;

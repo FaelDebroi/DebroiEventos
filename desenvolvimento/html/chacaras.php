@@ -1,6 +1,6 @@
 <?php include('conexao.php'); ?>
 <?php
-    $Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho, c.LocalizacaoUrlMaps
+$Chacara_consulta = "SELECT  c.IdChacaras ,e.rua, e.bairro, e.cidade, es.Estados, c.Nome, ic.Wifi, ic.piscina,ic.estacionamento, ic.valor, mg.caminho, c.LocalizacaoUrlMaps
                         FROM endereco e
                         left JOIN chacaras c ON e.IdEndereco = c.IdEndereco
                         left JOIN estado es ON es.IdEstado = e.Estado_Id
@@ -10,11 +10,11 @@
                         FROM imgchacaras
                         GROUP BY IdChacara) mg ON mg.IdChacara = c.IdChacaras;";
 
-    $Chacara = mysqli_query($conecta,$Chacara_consulta);
+$Chacara = mysqli_query($conecta, $Chacara_consulta);
 
-    if(!$Chacara){
-        die("falha na consulta ao banco de dados");
-    }
+if (!$Chacara) {
+    die("falha na consulta ao banco de dados");
+}
 
 ?>
 
@@ -35,72 +35,74 @@
         <?php include 'menuBarra.php'; ?>
     </header>
     <div class="container">
-        <?php 
-         while($Linha = mysqli_fetch_assoc($Chacara)){
-            
+        <?php
+        while ($Linha = mysqli_fetch_assoc($Chacara)) {
+
             //atrativos
-           $atrativos = [];
+            $atrativos = [];
 
-if ($Linha["Wifi"] == 1) {
-    $atrativos[] = "Wifi";
-}
+            if ($Linha["Wifi"] == 1) {
+                $atrativos[] = "Wifi";
+            }
 
-if ($Linha["piscina"] == 1) {
-    $atrativos[] = "Piscina";
-}
+            if ($Linha["piscina"] == 1) {
+                $atrativos[] = "Piscina";
+            }
 
 
-// Junta todos os atrativos separados por vírgula
-$Atrativos = implode(", ", $atrativos);
+            // Junta todos os atrativos separados por vírgula
+            $Atrativos = implode(", ", $atrativos);
 
-          
-         ?>
 
-        <div class="chacara">
-            <div class="imgChacara">
-                <?php if (!empty($Linha['caminho'])): ?>
-                <img src="../img/uploads/<?php echo $Linha['caminho']; ?>" class="imagemlogo"
-                    alt="<?php echo $Linha['caminho']; ?>">
-                <?php else: ?>
-                <!-- img -->
-                <img src="../img/Chacarasimg/fortaleza.jpg" class="imagemlogo" alt="Logo padrão">
-                <?php endif; ?>
-            </div>
-            <div class="divTextoChacara">
-                <h1><?php echo "Chácara: " . $Linha["Nome"] ?></h1>
-                <div class="chacaraObservacoes">
-                    <ul>
-                        <li><Strong>Localizacao:</Strong><?php echo $Linha["rua"].",",$Linha["bairro"] 
-                        ."<br> ",$Linha["cidade"] ."-",$Linha["Estados"]?>
-                        </li>
-                        <li><Strong>Atrativos: </Strong><?php echo $Atrativos ?></li>
-                        <li><Strong>Valor: </Strong><?php echo $Linha["valor"]?></li>
-                    </ul>
+            ?>
 
+            <div class="chacara">
+                <div class="imgChacara">
+                    <?php if (!empty($Linha['caminho'])): ?>
+                        <img src="../img/uploads/<?php echo $Linha['caminho']; ?>" class="imagemlogo"
+                            alt="<?php echo $Linha['caminho']; ?>">
+                    <?php else: ?>
+                        <!-- img -->
+                        <img src="../img/Chacarasimg/fortaleza.jpg" class="imagemlogo" alt="Logo padrão">
+                    <?php endif; ?>
                 </div>
-            </div>
-            <div class="divbtnChacara">
-                <a href="InfoChacaras.php?codigo=<?php echo $Linha["IdChacaras"]?>">
-                    <button class="btnSobre" id="idSobre">Sobre</button>
-                </a>
-                <!-- passar o nome da chacara -->
-                <a href="agendamento.php?codigo=<?php echo $Linha["IdChacaras"]?>">
-                    <button class="btnAgendamento" id="Agendar visita">Agendar Visita</button>
-                </a>
-            </div>
+                <div class="divTextoChacara">
+                    <h1><?php echo "Chácara: " . $Linha["Nome"] ?></h1>
+                    <div class="chacaraObservacoes">
+                        <ul>
+                            <li><Strong>Localizacao:</Strong><?php echo $Linha["rua"] . ",", $Linha["bairro"]
+                                . "<br> ", $Linha["cidade"] . "-", $Linha["Estados"] ?>
+                            </li>
+                            <li><Strong>Atrativos: </Strong><?php echo $Atrativos ?></li>
+                            <li><Strong>Valor: </Strong><?php echo $Linha["valor"] ?></li>
+                        </ul>
 
-        </div>
-        <?php }  ?>
+                    </div>
+                </div>
+                <div class="divbtnChacara">
+                    <a href="InfoChacaras.php?codigo=<?php echo $Linha["IdChacaras"] ?>">
+                        <button class="btnSobre" id="idSobre">Sobre</button>
+                    </a>
+                    <!-- passar o nome da chacara -->
+                    <a href="agendamento.php?codigo=<?php echo $Linha["IdChacaras"] ?>">
+                        <button class="btnAgendamento" id="Agendar visita">Agendar Visita</button>
+                    </a>
+                </div>
+
+            </div>
+        <?php } ?>
 
     </div>
 
-    <!-- Custom JS -->
+
     <script src="../js/chacaras.js"></script>
 
+
 </body>
+
 
 </html>
 
 <?php
-    mysqli_close($conecta);
-    ?>
+mysqli_close($conecta);
+?>

@@ -49,6 +49,10 @@
             <a href="#img6"><img src="../img/comida6.jpeg" alt="Miniatura 6"></a>
             <a href="#img7"><img src="../img/comida7.jpeg" alt="Miniatura 7"></a>
             <a href="#img8"><img src="../img/comida8.jpeg" alt="Miniatura 8"></a>
+            <a href="#img6"><img src="../img/comida6.jpeg" alt="Miniatura 6"></a>
+            <a href="#img7"><img src="../img/comida7.jpeg" alt="Miniatura 7"></a>
+            <a href="#img8"><img src="../img/comida8.jpeg" alt="Miniatura 8"></a>
+            <a href="#img8"><img src="../img/comida8.jpeg" alt="Miniatura 8"></a>
         </div>
 
 
@@ -155,6 +159,9 @@
         </div>
     </section>
 
+    <footer>
+        <?php include 'rodape.php'; ?>
+    </footer>
 </body>
 
 </html>

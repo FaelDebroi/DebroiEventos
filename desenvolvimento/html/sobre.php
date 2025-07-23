@@ -38,9 +38,8 @@
 
 
     </section>
-
     <footer>
-        <p>&copy; 2025 Debroi Eventos - Todos os direitos reservados</p>
+        <?php include 'rodape.php'; ?>
     </footer>
 
 </body>
