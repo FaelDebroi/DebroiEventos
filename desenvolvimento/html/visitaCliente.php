@@ -1,14 +1,14 @@
-<?php  
-    include('conexao.php');
-    session_start();
+<?php
+include('conexao.php');
+session_start();
 ?>
 
 <?php
 
-    $usuario_id = $_SESSION["user_portal"];
-    $AgendamentoSQl = " SELECT   c.Nome AS NomeUsuario, 
+$usuario_id = $_SESSION["user_portal"];
+$AgendamentoSQl = " SELECT   c.Nome AS NomeUsuario, 
                         ch.Nome AS NomeChacara,
-                        a.Data,
+                        a.DataVisita,
                         a.Hora, 
                         e.cep,
                         e.rua,
@@ -22,14 +22,14 @@
                         inner JOIN endereco e ON e.IdEndereco = ch.IdEndereco
                         INNER JOIN estado es ON es.IdEstado = e.Estado_Id 
                         where c.IdCliente = '$usuario_id';";
-    
-    $agendamentoConsulta = mysqli_query($conecta, $AgendamentoSQl);
+
+$agendamentoConsulta = mysqli_query($conecta, $AgendamentoSQl);
 
 
-    
-    if(! $agendamentoConsulta){
-        die("Não foi possivel visualizar os agendamentos");
-    }
+
+if (!$agendamentoConsulta) {
+    die("Não foi possivel visualizar os agendamentos");
+}
 
 ?>
 
@@ -52,29 +52,31 @@
     <main class="lista-container">
         <ul class="lista-chacaras">
 
-            <?php  
-
-            if(!mysqli_num_rows($agendamentoConsulta) > 0){
-                ?><h2 class="mensagem-erro"><strong>Você não tem visita!!</strong></h2><?php
-            }
-                while($agendamentoSolto = mysqli_fetch_assoc($agendamentoConsulta)){
-                    
-                   
-            ?>
-            <li class="chacara-item">
-                <div class="info-principal">
-                    <h2><strong>Nome do contratante: <?php echo $agendamentoSolto["NomeUsuario"]; ?></strong></h2>
-                    <h2><strong>Nome do Espaco: <?php echo $agendamentoSolto["NomeChacara"]; ?></strong></h2>
-                    <br>
-                    <span class="data"><strong>Visita: <?php echo $agendamentoSolto["Data"]; ?></strong></span><br>
-                    <span class="Horario"><strong>Horario: <?php echo $agendamentoSolto["Hora"]; ?></strong></span>
-                </div>
-                <p><strong>Localização:</strong>
-                    <?php echo $agendamentoSolto["rua"] . ", " . $agendamentoSolto["bairro"] ." | ".$agendamentoSolto["cidade"] . " - " .$agendamentoSolto["Estados"];?>
-                </p>
-                <a href="#" class="botao">Cancelar</a>
-            </li>
             <?php
+
+            if (!mysqli_num_rows($agendamentoConsulta) > 0) {
+                ?>
+                <h2 class="mensagem-erro"><strong>Você não tem visita!!</strong></h2><?php
+            }
+            while ($agendamentoSolto = mysqli_fetch_assoc($agendamentoConsulta)) {
+
+
+                ?>
+                <li class="chacara-item">
+                    <div class="info-principal">
+                        <h2><strong>Nome do contratante: <?php echo $agendamentoSolto["NomeUsuario"]; ?></strong></h2>
+                        <h2><strong>Nome do Espaco: <?php echo $agendamentoSolto["NomeChacara"]; ?></strong></h2>
+                        <br>
+                        <span class="data"><strong>Visita:
+                                <?php echo $agendamentoSolto["DataVisita"]; ?></strong></span><br>
+                        <span class="Horario"><strong>Horario: <?php echo $agendamentoSolto["Hora"]; ?></strong></span>
+                    </div>
+                    <p><strong>Localização:</strong>
+                        <?php echo $agendamentoSolto["rua"] . ", " . $agendamentoSolto["bairro"] . " | " . $agendamentoSolto["cidade"] . " - " . $agendamentoSolto["Estados"]; ?>
+                    </p>
+                    <a href="#" class="botao">Cancelar</a>
+                </li>
+                <?php
             }
             ?>
 

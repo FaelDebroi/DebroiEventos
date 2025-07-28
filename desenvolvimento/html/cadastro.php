@@ -1,34 +1,42 @@
-<?php 
+<?php
 
-   include('conexao.php');
+include('conexao.php');
 
 // insercao no banco
-if(isset($_POST["nome"], $_POST["email"], 
-    $_POST["telefone"], $_POST["cpf"], $_POST["senha"])){
-        
-    $nome      = $_POST["nome"];
-    $Email     = $_POST["email"];
-    $telefone  = $_POST["telefone"];
-    $cpf       = $_POST["cpf"];
-    $senha     = $_POST["senha"];
+if (
+    isset(
+    $_POST["nome"],
+    $_POST["email"],
+    $_POST["telefone"],
+    $_POST["cpf"],
+    $_POST["senha"]
+)
+) {
+
+    $nome = $_POST["nome"];
+    $Email = $_POST["email"];
+    $telefone = $_POST["telefone"];
+    $cpf = $_POST["cpf"];
+    $senha = $_POST["senha"];
+    $Whatsapp = $_POST["WhatsApp"];
 
     //limpando cpf
-    $cpfLimpo = preg_replace('/\D/', '', $_POST['cpf']); 
+    $cpfLimpo = preg_replace('/\D/', '', $_POST['cpf']);
 
     print_r($cpfLimpo);
 
 
-   $inserir = "INSERT INTO cliente (Nome, Email, telefone, Senha, Cpf, Admin) 
-            VALUES ('$nome', '$Email', '$telefone', '$senha', '$cpfLimpo', '0')";
+    $inserir = "INSERT INTO usuario (Nome, Email, telefone, Senha, Cpf, Admin,zap) 
+            VALUES ('$nome', '$Email', '$telefone', '$senha', '$cpfLimpo', '0','$Whatsapp')";
 
     $operacao_inserir = mysqli_query($conecta, $inserir);
-    
-    if(!$operacao_inserir){
+
+    if (!$operacao_inserir) {
         die("Falha na inserçao");
-    }else{
+    } else {
         header("location:login.php");
     }
- }
+}
 ?>
 
 
@@ -63,16 +71,6 @@ if(isset($_POST["nome"], $_POST["email"],
                     <input type="email" name="email" placeholder="Digite seu email" required>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="telefone">Telefone:</label>
-                    <input type="text" name="telefone" placeholder="Digite seu telefone" required>
-                </div>
-                <div class="form-group">
-                    <label for="cpf">CPF:</label>
-                    <input type="text" name="cpf" placeholder="Digite seu CPF" required>
-                </div>
-            </div>
 
             <div class="form-row">
                 <div class="form-group">
@@ -83,6 +81,21 @@ if(isset($_POST["nome"], $_POST["email"],
                     <label for="confirmar-senha">Confirme a senha:</label>
                     <input type="password" name="confirmar_senha" placeholder="Confirme sua senha" required>
                 </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" name="telefone" placeholder="Digite seu telefone" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" name="cpf" placeholder="Digite seu CPF" required>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <input type="checkbox" id="WhatsApp" name="WhatsApp" value="1">
+                <label for="WhatsApp">Voce possui WhatsApp nesse numero?</label>
             </div>
 
             <button type="submit">Cadastrar</button>
