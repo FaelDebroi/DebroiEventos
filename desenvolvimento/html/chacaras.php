@@ -70,13 +70,15 @@ if (!$Chacara) {
                     <h1><?php echo "Chácara: " . $Linha["Nome"] ?></h1>
                     <div class="chacaraObservacoes">
                         <ul>
-                            <li><Strong>Localizacao:</Strong><?php echo $Linha["rua"] . ",", $Linha["bairro"]
-                                . "<br> ", $Linha["cidade"] . "-", $Linha["Estados"] ?>
+                            <li>
+                                <strong>Localizacao:</strong>
+                                <span class="cortar-texto">
+                                    <?php echo $Linha["rua"] . ", " . $Linha["bairro"] . ", " . $Linha["cidade"] . "-" . $Linha["Estados"]; ?>
+                                </span>
                             </li>
                             <li><Strong>Atrativos: </Strong><?php echo $Atrativos ?></li>
                             <li><Strong>Valor: </Strong><?php echo $Linha["valor"] ?></li>
                         </ul>
-
                     </div>
                 </div>
                 <div class="divbtnChacara">
