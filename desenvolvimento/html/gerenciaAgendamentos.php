@@ -10,7 +10,8 @@ $AgendamentoSQl = " SELECT
                         c.Telefone,
                         c.Email,
                         ch.Nome AS NomeChacara,
-                        a.Data,
+                        a.DataVisita,
+                        a.DataFesta,
                         a.Hora, 
                         e.cep,
                         e.rua,
@@ -142,6 +143,7 @@ if (!$agendamentoConsulta) {
                         <th>Data de Visita</th>
                         <th>Horario de Visita</th>
                         <th>Nome Chacara</th>
+                        <th>Data da festa</th>
                         <th>Localizacao</th>
                         <th>acoes</th>
 
@@ -156,9 +158,10 @@ if (!$agendamentoConsulta) {
                             <td><?php echo $Agendamento["NomeUsuario"]; ?></td>
                             <td><?php echo $Agendamento["Telefone"]; ?></td>
                             <td><?php echo $Agendamento["Email"]; ?></td>
-                            <td><?php echo $Agendamento["Data"]; ?></td>
+                            <td><?php echo $Agendamento["DataVisita"]; ?></td>
                             <td><?php echo $Agendamento["Hora"]; ?></td>
                             <td><?php echo $Agendamento["NomeChacara"]; ?></td>
+                            <td><?php echo $Agendamento["DataFesta"]; ?></td>
                             <td><?php echo $Agendamento["rua"] . ", " . $Agendamento["bairro"] . " | " . $Agendamento["cidade"] . " - " . $Agendamento["Estados"]; ?>
                             </td>
                             <td class="actions">
