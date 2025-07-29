@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `debroieventos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `debroieventos`;
--- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
 --
 -- Host: localhost    Database: debroieventos
 -- ------------------------------------------------------
@@ -27,17 +27,18 @@ DROP TABLE IF EXISTS `agendamentovisita`;
 CREATE TABLE `agendamentovisita` (
   `IdAgendamentoVisita` int(11) NOT NULL AUTO_INCREMENT,
   `IdCliente` int(11) NOT NULL,
-  `Data` date NOT NULL,
+  `DataVisita` date NOT NULL,
   `Hora` time NOT NULL,
   `IdChacara` int(11) NOT NULL,
+  `DataFesta` date DEFAULT NULL,
   `ConfirmacaoAgendamento` int(11) DEFAULT NULL,
   `Mensagem` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`IdAgendamentoVisita`),
   KEY `IdCliente` (`IdCliente`),
   KEY `IdChacara` (`IdChacara`),
-  CONSTRAINT `agendamentovisita_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`),
+  CONSTRAINT `agendamentovisita_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `usuario` (`IdCliente`),
   CONSTRAINT `agendamentovisita_ibfk_2` FOREIGN KEY (`IdChacara`) REFERENCES `chacaras` (`IdChacaras`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +47,7 @@ CREATE TABLE `agendamentovisita` (
 
 LOCK TABLES `agendamentovisita` WRITE;
 /*!40000 ALTER TABLE `agendamentovisita` DISABLE KEYS */;
-INSERT INTO `agendamentovisita` VALUES (1,3,'2025-07-16','17:41:00',2,0,'teste'),(2,3,'2025-07-10','17:41:00',2,0,'teste'),(3,3,'2025-07-05','20:41:00',2,0,'teste'),(4,3,'2025-07-01','17:43:00',2,0,'tsete'),(5,2,'2025-07-07','01:18:00',1,0,'teste');
+INSERT INTO `agendamentovisita` VALUES (1,3,'2025-07-16','17:41:00',2,NULL,0,'teste'),(2,3,'2025-07-10','17:41:00',2,NULL,0,'teste'),(3,3,'2025-07-05','20:41:00',2,NULL,0,'teste'),(4,3,'2025-07-01','17:43:00',2,NULL,0,'tsete'),(5,2,'2025-07-07','01:18:00',1,NULL,0,'teste'),(6,2,'2025-07-17','23:02:00',2,'0000-00-00',0,'ssadad');
 /*!40000 ALTER TABLE `agendamentovisita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,35 +87,6 @@ LOCK TABLES `chacaras` WRITE;
 /*!40000 ALTER TABLE `chacaras` DISABLE KEYS */;
 INSERT INTO `chacaras` VALUES (1,2,'Chacara fortaleza','O cenário escolhido para celebrar o casamento é fundamental para os noivos imaginarem e criarem a festa dos seus sonhos. Por isso, escolher o espaço demanda cuidado e atenção. A Chácara Fortaleza facilita o processo decisivo e oferece um ambiente tranquilo, irretocável, que pode ser adaptado a qualquer festa.\r\n\r\nEspaços e capacidade\r\n\r\nA Chácara Fortaleza possui uma área de 20 mil metros quadrados, sendo que o casarão em si ocupa 700 metros quadrados. Há 4 quartos, 5 banheiros, piscina semiolímp',1,1,2,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.7713441385845!2d-47.090007624687004!3d-22.995434279192803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cbce25ed510b%3A0xc246e854b55a348a!2sEspa%C3%A7o%20Dona%20Floripes!5e0!3m2!1spt-BR!2sbr!4v1751910976106!5m2!1spt-BR!2sbr>'),(2,2,'Chacara fortaleza','O cenário escolhido para celebrar o casamento é fundamental para os noivos imaginarem e criarem a festa dos seus sonhos. Por isso, escolher o espaço demanda cuidado e atenção. A Chácara Fortaleza facilita o processo decisivo e oferece um ambiente tranquilo, irretocável, que pode ser adaptado a qualquer festa.\r\n\r\nEspaços e capacidade\r\n\r\nA Chácara Fortaleza possui uma área de 20 mil metros quadrados, sendo que o casarão em si ocupa 700 metros quadrados. Há 4 quartos, 5 banheiros, piscina semiolímp',2,2,2,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235108.80641256474!2d-47.41472411328121!3d-22.965870399999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c93f36c5dee5%3A0x1ab8483a31456599!2sCh%C3%A1cara%20fortaleza!5e0!3m2!1spt-BR!2sbr!4v1751769279888!5m2!1spt-BR!2sbr'),(3,1,'Chacara florips',' o que o Espaço Dona Floripes proporciona aos seus clientes – um ambiente planejado para oferecer uma excelente infraestrutura para diversos tipos de eventos: casamentos, aniversários, conferências, convenções, confraternizações de empresas e festas em geral. Conta com hall de entrada, dois salões, palco, camarim para noivas e debutantes, gramado e bambuzal, playground, piscinas, iluminação ambiente, amplo estacionamento, cozinha equipada com acesso individualizado, acesso para deficientes físic',3,3,1,'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.7713441385845!2d-47.090007624687004!3d-22.995434279192803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cbce25ed510b%3A0xc246e854b55a348a!2sEspa%C3%A7o%20Dona%20Floripes!5e0!3m2!1spt-BR!2sbr!4v1751910976106!5m2!1spt-BR!2sbr>'),(4,1,'Chacara florips',' o que o Espaço Dona Floripes proporciona aos seus clientes – um ambiente planejado para oferecer uma excelente infraestrutura para diversos tipos de eventos: casamentos, aniversários, conferências, convenções, confraternizações de empresas e festas em geral. Conta com hall de entrada, dois salões, palco, camarim para noivas e debutantes, gramado e bambuzal, playground, piscinas, iluminação ambiente, amplo estacionamento, cozinha equipada com acesso individualizado, acesso para deficientes físic',4,4,1,'<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.7713441385845!2d-47.090007624687004!3d-22.995434279192803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cbce25ed510b%3A0xc246e854b55a348a!2sEspa%C3%A7o%20Dona%20Floripes!5e0!3m2!1spt-BR!2sbr!4v1751910562610!5m2!1spt-BR!2sbr\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
 /*!40000 ALTER TABLE `chacaras` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cliente`
---
-
-DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cliente` (
-  `IdCliente` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(100) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Telefone` varchar(15) NOT NULL,
-  `Senha` varchar(100) NOT NULL,
-  `Cpf` varchar(11) NOT NULL,
-  `Admin` int(1) DEFAULT NULL,
-  PRIMARY KEY (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cliente`
---
-
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Rafinha Do grau','rafaeldebroi@gmail.com','19989222780','','42957040832',0),(2,'teste','rafael@gmail.com','32323232','teste123','2147483647',1),(3,'tesre','rafaeldebroi@gmail.com','19994750050','','725848820',0),(4,'SANDRA MARIA DEBROI','sandradebroi@gmail.com','19989222780','123456789','725848820',0),(5,'Gustavinho do Grau','gustavo@gmail.com','19991121440','12345678','725848820',0),(6,'testeete','rafaeldebroi@gmail.com','19994750050','12345678','2147483647',0);
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -310,6 +282,36 @@ LOCK TABLES `proprietario` WRITE;
 INSERT INTO `proprietario` VALUES (1,'Carlos Oliveira',12345678901,'(11) 91234-5678','carlos.oliveira@gmail.com'),(2,'Fernanda Souza',98765432100,'(21) 99876-5432','fernanda.souza@hotmail.com'),(3,'Juliana Lima',11223344556,'(31) 91234-8765','juliana.lima@yahoo.com');
 /*!40000 ALTER TABLE `proprietario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `IdCliente` int(11) NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(100) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Telefone` varchar(15) NOT NULL,
+  `Senha` varchar(100) NOT NULL,
+  `Cpf` varchar(11) NOT NULL,
+  `Admin` int(1) DEFAULT NULL,
+  `zap` int(1) DEFAULT NULL,
+  PRIMARY KEY (`IdCliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'Rafinha Do grau','rafaeldebroi@gmail.com','19989222780','','42957040832',0,NULL),(2,'teste','rafael@gmail.com','32323232','teste123','2147483647',1,NULL),(3,'tesre','rafaeldebroi@gmail.com','19994750050','','725848820',0,NULL),(4,'SANDRA MARIA DEBROI','sandradebroi@gmail.com','19989222780','123456789','725848820',0,NULL),(5,'Gustavinho do Grau','gustavo@gmail.com','19991121440','12345678','725848820',0,NULL),(6,'testeete','rafaeldebroi@gmail.com','19994750050','12345678','2147483647',0,NULL),(7,'Rafael DEBROI','rafaeldebroi@gmail.com','19989222780','DEBROI','2147483647',0,0),(8,'Rafael DEBROI','rafaeldebroi@gmail.com','19989222780','DEBROI','42957040832',0,0),(9,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','DEBROI','42957040832',0,1),(10,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','42957040832',0,1),(11,'Adalberto','rafaeldebroi@gmail.com','19991121440','12345678','11111111111',0,1),(12,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','11111111111',0,1),(13,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','11111111111',0,1),(14,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','asdasda','00725848820',0,1),(15,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','2147483647',0,1),(16,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','2147483647',0,0),(17,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','12345678','00725848820',0,0),(18,'Rafael DEBROI','rafaeldebroi@gmail.com','19989222780','agfgjgfjfg','11111111111',0,1),(19,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','asdasdagf','44444444444',0,1),(20,'SANDRA MARIA DEBROI','sup@eitvcloud.com','19994750050','12345678','',0,1),(21,'Rafael DEBROI','rafaeldebroi@gmail.com','19994750050','123456789','42957040832',0,0),(22,'Rafael DEBROIoi','rafaeldebrooi@gmail.com','19994750050','123456','00725848820',0,0);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -320,4 +322,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-28 18:39:35
+-- Dump completed on 2025-07-29 19:04:01

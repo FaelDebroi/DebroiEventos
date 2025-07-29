@@ -2,6 +2,10 @@
 
 include('conexao.php');
 
+
+//Criar Verificacao se Cpf
+
+
 // insercao no banco
 if (
     isset(
@@ -22,8 +26,31 @@ if (
 
     //limpando cpf
     $cpfLimpo = preg_replace('/\D/', '', $_POST['cpf']);
+    echo "<script>Console.log('$cpfLimpo');</script>";
 
-    print_r($cpfLimpo);
+    $CpfBancoSql = "select * from usuario c where c.Cpf = '$cpf' ";
+    $CpfBanco = mysqli_query($conecta, $CpfBancoSql);
+
+    if (mysqli_num_rows($CpfBanco) > 0) {
+        echo "<script>alert('CPF já cadastrado!'); window.history.back();</script>";
+        exit;
+    }
+
+    $nomeUserBancoSql = "select * from usuario c where c.Nome ='$nome'";
+    $nomeusuario = mysqli_query($conecta, $nomeUserBancoSql);
+
+    if (mysqli_num_rows($nomeusuario) > 0) {
+        echo "<script>alert('Nome de usuario ja cadastrado!'); window.history.back();</script>";
+        exit;
+    }
+
+    $EmailBancoSql = "select * from usuario c where c.Email ='$Email'";
+    $EmailBanco = mysqli_query($conecta, $EmailBancoSql);
+
+    if (mysqli_num_rows($EmailBanco) > 0) {
+        echo "<script>alert('EMail de usuario ja cadastrado!'); window.history.back();</script>";
+        exit;
+    }
 
 
     $inserir = "INSERT INTO usuario (Nome, Email, telefone, Senha, Cpf, Admin,zap) 
@@ -59,7 +86,7 @@ if (
             <img src="../img/logoDebroi.png" alt="Logo Debroi Eventos">
         </div>
         <h2>Crie sua Conta</h2>
-        <form id="cadastro-form" method="post" onsubmit="return verificarSenhas()">
+        <form id="cadastro-form" onsubmit="return validarTudo()" method="post">
             <div class="form-row">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
@@ -75,11 +102,13 @@ if (
             <div class="form-row">
                 <div class="form-group">
                     <label for="senha">Senha:</label>
-                    <input type="password" name="senha" placeholder="Digite sua senha" required>
+                    <input type="password" name="senha" placeholder="Digite sua senha" minlength="8" maxlength="30"
+                        required>
                 </div>
                 <div class="form-group">
                     <label for="confirmar-senha">Confirme a senha:</label>
-                    <input type="password" name="confirmar_senha" placeholder="Confirme sua senha" required>
+                    <input type="password" name="confirmar_senha" placeholder="Confirme sua senha" minlength="8"
+                        maxlength="30" required>
                 </div>
             </div>
 
@@ -90,7 +119,7 @@ if (
                 </div>
                 <div class="form-group">
                     <label for="cpf">CPF:</label>
-                    <input type="text" name="cpf" placeholder="Digite seu CPF" required>
+                    <input type="text" name="cpf" placeholder="Digite seu CPF" required maxlength="14">
                 </div>
             </div>
             <div style="display: flex; align-items: center; gap: 5px;">

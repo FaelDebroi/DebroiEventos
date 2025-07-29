@@ -7,8 +7,10 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(to right, #000000, #0f00b8, #0707ff);
-    /* fundo gradiente escuro */
+    background-image: url("../img/buffet.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     min-height: 100vh;
     display: flex;
@@ -20,8 +22,7 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
-    background-color: rgba(255, 255, 255, 0.05);
-    /* fundo sutil transparente */
+    background: linear-gradient(to right, #2b3e4e, #152580, #0456b4);
     padding: 40px 30px;
     border-radius: 10px;
     backdrop-filter: blur(5px);
