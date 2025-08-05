@@ -1,24 +1,70 @@
 <?php
-$etapa = 1;
+session_start(); // Sempre no topo
 
-// Simula envio do código (em um caso real, você geraria e enviaria por e-mail)
+require __DIR__ . '/../../vendor/autoload.php';
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+$mail = new PHPMailer(true);
+
+
+
+$etapa = 1; // Etapa inicial: mostrar campo de e-mail
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     if (isset($_POST["email"])) {
+
         $email = $_POST["email"];
-
-        // Aqui você geraria o código e enviaria por e-mail
-        // Ex: mail($email, "Seu código", "Código: 123456");
-
-        $codigo_enviado = "123456"; // simulação
-        session_start();
-        $_SESSION["codigo_verificacao"] = $codigo_enviado;
         $_SESSION["email"] = $email;
-        $etapa = 2;
-    } elseif (isset($_POST["codigo"])) {
-        session_start();
-        if ($_POST["codigo"] === $_SESSION["codigo_verificacao"]) {
-            echo "<script>alert('Código verificado com sucesso! Redirecionando para redefinir senha...');</script>";
-            // Aqui você redireciona ou mostra o formulário de nova senha
+
+        // Gera o código aleatório com 6 dígitos
+        $codigo = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+        $_SESSION["codigo_enviado"] = $codigo;
+
+        // Configurações do PHPMailer (exemplo)
+        try {
+            // Configura o servidor SMTP - altere para seu servidor
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'debroieventosresponde@gmail.com';
+            $mail->Password = 'bgun zpnr cbfv pewz';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            // Remetente
+            $mail->setFrom('debroieventosresponde@gmail.com', 'DebroiEventos');
+
+            // Destinatário
+            $mail->addAddress($email);
+
+            // Conteúdo
+            $mail->isHTML(true);
+            $mail->Subject = "Teste simples de envio do email via PHP";
+            $mail->Body = "Olha esse é seu código: <b>$codigo</b>";
+            $mail->AltBody = "Olha esse é seu código: $codigo";
+
+            // Enviar e checar resultado
+            $mail->send();
+
+            echo "Email enviado para $email com sucesso!<br>";
+            echo "Código enviado: $codigo";
+
+            $etapa = 2; // Próxima etapa
+
+        } catch (Exception $e) {
+            echo "Erro ao enviar email: {$mail->ErrorInfo}";
+        }
+    }
+
+    // Etapa 2: Verifica o código enviado
+    elseif (isset($_POST["codigo"])) {
+        if ($_POST["codigo"] === $_SESSION["codigo_enviado"]) {
+            echo "<script>alert('Código verificado com sucesso! Redirecionando...');</script>";
+            // Aqui você pode redirecionar ou mostrar o formulário de nova senha
         } else {
             echo "<script>alert('Código incorreto!');</script>";
             $etapa = 2;
@@ -40,15 +86,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             font-family: Arial, sans-serif;
         }
 
+
+
         body {
+            background-image: url("../img/casamento2.jpg");
+            background-size: cover;
+            /* Cobre toda a tela cortando o excesso */
+            background-repeat: no-repeat;
+            /* Não repete a imagem */
+            background-position: bottom center;
+            /* Mostra mais a parte de baixo da imagem */
+
+            height: 100vh;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #005f99, #009fe3);
+
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
+
 
         .form-container {
             background-color: #ffffff;
@@ -56,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
         }
 
         h2 {
