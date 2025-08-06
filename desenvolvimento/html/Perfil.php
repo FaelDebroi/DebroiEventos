@@ -25,7 +25,7 @@ if (
     $senha = $_POST["senha"];
     $cpf = $_POST["cpf"];
 
-    $alteracaoSql = "UPDATE Cliente SET Nome = '$nome', Email = '$email', Telefone = '$telefone', Senha = '$senha', 
+    $alteracaoSql = "UPDATE usuario SET Nome = '$nome', Email = '$email', Telefone = '$telefone', Senha = '$senha', 
     Cpf = '$cpf' WHERE IdCliente = '$usuario_id';";
 
 

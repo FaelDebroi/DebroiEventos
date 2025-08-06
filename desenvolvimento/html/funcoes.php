@@ -135,15 +135,11 @@ function alterarNome($Img, $POST, $contador)
     return "Img" . $nomeFinal . "_" . $contador . "." . $extensao;
 }
 
-function EnviarEmail($email)
+function EnviarEmail($email, $codigo)
 {
     $mail = new PHPMailer(true);
 
     $_SESSION["email"] = $email;
-
-    // Gera o código aleatório com 6 dígitos
-    $codigo = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
-    $_SESSION["codigo_enviado"] = $codigo;
 
     // Configurações do PHPMailer (exemplo)
     try {
