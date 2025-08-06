@@ -1,5 +1,12 @@
 <?php
 include('conexao.php');
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 //funcoes
 function mostrarAviso($numero)
 {
@@ -126,6 +133,50 @@ function alterarNome($Img, $POST, $contador)
     $extensao = strtolower(pathinfo($Img["name"], PATHINFO_EXTENSION));
 
     return "Img" . $nomeFinal . "_" . $contador . "." . $extensao;
+}
+
+function EnviarEmail($email)
+{
+    $mail = new PHPMailer(true);
+
+    $_SESSION["email"] = $email;
+
+    // Gera o código aleatório com 6 dígitos
+    $codigo = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+    $_SESSION["codigo_enviado"] = $codigo;
+
+    // Configurações do PHPMailer (exemplo)
+    try {
+        // Configura o servidor SMTP - altere para seu servidor
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'debroieventosresponde@gmail.com';
+        $mail->Password = 'bgun zpnr cbfv pewz';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Remetente
+        $mail->setFrom('debroieventosresponde@gmail.com', 'DebroiEventos');
+
+        // Destinatário
+        $mail->addAddress($email);
+
+        // Conteúdo
+        $mail->isHTML(true);
+        $mail->Subject = "Teste simples de envio do email via PHP";
+        $mail->Body = "Olha esse é seu código: <b>$codigo</b>";
+        $mail->AltBody = "Olha esse é seu código: $codigo";
+
+        // Enviar e checar resultado
+        $mail->send();
+
+        $etapa = 2; // Próxima etapa
+        return $etapa;
+
+    } catch (Exception $e) {
+        echo "Erro ao enviar email: {$mail->ErrorInfo}";
+    }
 }
 
 ?>

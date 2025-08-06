@@ -1,62 +1,21 @@
 <?php
 session_start(); // Sempre no topo
-
-require __DIR__ . '/../../vendor/autoload.php';
-
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-$mail = new PHPMailer(true);
-
-
-
+require_once("../html/funcoes.php");
 $etapa = 1; // Etapa inicial: mostrar campo de e-mail
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (isset($_POST["email"])) {
+        $Email = mysqli_real_escape_string($conecta, $_POST["email"]);
 
-        $email = $_POST["email"];
-        $_SESSION["email"] = $email;
+        $consultaEmail = "SELECT * FROM usuario WHERE Email = '$Email'";
+        $resultado = mysqli_query($conecta, $consultaEmail);
 
-        // Gera o código aleatório com 6 dígitos
-        $codigo = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
-        $_SESSION["codigo_enviado"] = $codigo;
-
-        // Configurações do PHPMailer (exemplo)
-        try {
-            // Configura o servidor SMTP - altere para seu servidor
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'debroieventosresponde@gmail.com';
-            $mail->Password = 'bgun zpnr cbfv pewz';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
-
-            // Remetente
-            $mail->setFrom('debroieventosresponde@gmail.com', 'DebroiEventos');
-
-            // Destinatário
-            $mail->addAddress($email);
-
-            // Conteúdo
-            $mail->isHTML(true);
-            $mail->Subject = "Teste simples de envio do email via PHP";
-            $mail->Body = "Olha esse é seu código: <b>$codigo</b>";
-            $mail->AltBody = "Olha esse é seu código: $codigo";
-
-            // Enviar e checar resultado
-            $mail->send();
-
-            echo "Email enviado para $email com sucesso!<br>";
-            echo "Código enviado: $codigo";
-
-            $etapa = 2; // Próxima etapa
-
-        } catch (Exception $e) {
-            echo "Erro ao enviar email: {$mail->ErrorInfo}";
+        if ($resultado && mysqli_num_rows($resultado) > 0) {
+            $etapa = EnviarEmail($Email);
+        } else {
+            echo "<script>alert('Esse email não é cadastrado.');</script>";
         }
     }
 
@@ -70,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $etapa = 2;
         }
     }
+
 }
 ?>
 
